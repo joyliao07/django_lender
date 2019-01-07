@@ -1,1 +1,34 @@
-# django_lender
+# DJANGO_LENDER
+
+
+Author: Joyce Liao
+Version: 1.0.0
+
+
+
+## OVERVIEW
+THIS PROGRAM WILL START A WEBSITE WITH DOCKER AND DJANGO AS ITS FRAMEWORK.
+
+
+
+## GETTING STARTED
+TO START THIS PROGRAM, THE USER NEED PYTHON 3.6.
+
+
+
+## ARCHITECTURE
+
+
+
+
+
+## API
+
+
+
+## CHANGE LOG
+
+
+
+
+2019-01-07 Repo is created
