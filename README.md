@@ -17,9 +17,9 @@ TO START THIS PROGRAM, THE USER NEED PYTHON 3.6.
 
 
 ## ARCHITECTURE
-
-
-
+1. Set up Docker
+2. Set up Django
+3. Run server
 
 
 ## API
