@@ -1,3 +1,4 @@
+"""To control views of project django_lender."""
 from django.shortcuts import render
 
 

@@ -1,10 +1,10 @@
+"""To set up models for lender_books app."""
 from django.db import models
 import datetime
 
 
 class Book(models.Model):
-    """
-    """
+    """To set up Book class."""
     cover_imgage = models.CharField(max_length=400)
     title = models.CharField(max_length=48)
     author = models.CharField(max_length=50)
