@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 
 class Book(models.Model):
     """To set up Book class."""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books')
+
     cover_imgage = models.ImageField(max_length=400)
     title = models.CharField(max_length=48)
     author = models.CharField(max_length=50)
