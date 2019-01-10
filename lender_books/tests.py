@@ -1,14 +1,16 @@
 """To test django project."""
 from django.test import TestCase, RequestFactory
 from .models import Book
+from django.contrib.auth.models import User
 
 
 class TestBookModel(TestCase):
     """To test book model."""
     def setUp(self):
         """To setup class."""
-        Book.objects.create(title='Test Book 1', author='author 1')
-        Book.objects.create(title='Test Book 2', author='author 2')
+        user = User.objects.create_user('user_test', 'test@test.com', 'testuser123')
+        Book.objects.create(title='Test Book 1', author='author 1', user=user)
+        Book.objects.create(title='Test Book 2', author='author 2', user=user)
 
     def test_book_titles(self):
         """To test titles of books."""
@@ -39,9 +41,10 @@ class TestBookViews(TestCase):
     def setUp(self):
         """To set up class."""
         self.request = RequestFactory()
+        user = User.objects.create_user('user_test', 'test@test.com', 'testuser123')
 
-        self.book = Book.objects.create(title='Test Book 1', author='author 1')
-        Book.objects.create(title='Test Book 2', author='author 2')
+        self.book = Book.objects.create(title='Test Book 1', author='author 1', user=user)
+        Book.objects.create(title='Test Book 2', author='author 2', user=user)
 
     def test_list_view_context(self):
         """To test content of list_view."""
