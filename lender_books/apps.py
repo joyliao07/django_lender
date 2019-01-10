@@ -1,3 +1,4 @@
+"""To configurate app lender_books."""
 from django.apps import AppConfig
 
 

@@ -1,3 +1,4 @@
+"""To list any url paths."""
 from .views import book_list_view, book_detail_view
 from django.urls import path
 
