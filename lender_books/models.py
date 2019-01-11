@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 
+
 class Book(models.Model):
     """To set up Book class."""
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books')
@@ -25,8 +26,8 @@ class Book(models.Model):
     ]
     status = models.CharField(max_length=11, default='available', choices=STATES)
 
-    date_added = models.DateField(default=timezone.now)
-    last_borrowed = models.DateField(default=timezone.now)
+    date_added = models.DateTimeField(default=timezone.now)
+    last_borrowed = models.DateTimeField(auto_now=True)
 
     # def __repr__(self):
     #     return ''

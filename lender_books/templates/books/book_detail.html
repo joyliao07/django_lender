@@ -1,4 +1,6 @@
 {% extends "generic/base.html" %}
+{% load extras %}
+{% load tz %}
 
 {% block title %}Detail{% endblock title %}
 {% block content %}
@@ -8,7 +10,7 @@
 <img src={{ book.cover_image }} alt="book cover image"></img>
 <p>{{ book.status }}</p>
 <p>{{ book.year }}</p>
-<p>{{ book.date_added }}</p>
-<p>{{ book.last_borrowed }}</p>
+<p>{{ book.date_added|get_date_string }}</p>
+<p>{{ book.last_borrowed|get_date_string }}</p>
 </div>
 {% endblock content %}
