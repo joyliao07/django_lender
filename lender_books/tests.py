@@ -8,12 +8,13 @@ class TestBookModel(TestCase):
     """To test book model."""
     def setUp(self):
         """To setup class."""
-        user = User.objects.create_user('user_test', 'test@test.com', 'testuser123')
-        Book.objects.create(title='Test Book 1', author='author 1', user=user)
-        Book.objects.create(title='Test Book 2', author='author 2', user=user)
+        self.user = User.objects.create_user('user_test', 'test@test.com', 'testuser123')
+        self.book = Book.objects.create(title='Test Book 1', author='author 1', user=self.user)
+        Book.objects.create(title='Test Book 2', author='author 2', user=self.user)
 
     def test_book_titles(self):
         """To test titles of books."""
+        # import pdb; pdb.set_trace()
         one = Book.objects.get(title='Test Book 1')
         self.assertEqual(one.title, 'Test Book 1')
 
@@ -31,7 +32,7 @@ class TestBookModel(TestCase):
 
     def test_create_new_book(self):
         """To test creating a new book."""
-        new_book = Book.objects.create(title='new', author='')
+        new_book = Book.objects.create(title='new', author='', user=self.user)
         self.assertEqual(new_book.title, 'new')
 
 
@@ -41,15 +42,16 @@ class TestBookViews(TestCase):
     def setUp(self):
         """To set up class."""
         self.request = RequestFactory()
-        user = User.objects.create_user('user_test', 'test@test.com', 'testuser123')
+        self.user = User.objects.create_user('user_test', 'test@test.com', 'testuser123')
 
-        self.book = Book.objects.create(title='Test Book 1', author='author 1', user=user)
-        Book.objects.create(title='Test Book 2', author='author 2', user=user)
+        self.book = Book.objects.create(title='Test Book 1', author='author 1', user=self.user)
+        Book.objects.create(title='Test Book 2', author='author 2', user=self.user)
 
     def test_list_view_context(self):
         """To test content of list_view."""
         from .views import book_list_view
         request = self.request.get('')
+        request.user = self.user
         response = book_list_view(request)
         self.assertIn(b'Test Book 1', response.content)
 
@@ -57,6 +59,7 @@ class TestBookViews(TestCase):
         """To test status code of list_view."""
         from .views import book_list_view
         request = self.request.get('')
+        request.user = self.user
         response = book_list_view(request)
         self.assertEqual(200, response.status_code)
 
@@ -64,6 +67,7 @@ class TestBookViews(TestCase):
         """To test content of detail_view."""
         from .views import book_detail_view
         request = self.request.get('')
+        request.user = self.user
         response = book_detail_view(request, self.book.id)
         self.assertIn(b'author 1', response.content)
 
@@ -72,6 +76,7 @@ class TestBookViews(TestCase):
         from .views import book_detail_view
         from django.http import Http404
         request = self.request.get('')
+        request.user = self.user
 
         with self.assertRaises(Http404):
             book_detail_view(request, '0')
