@@ -2,6 +2,7 @@
 branch = True
 
 omit =
+    */templatetags/*
     */tests/*
     */migrations/*
     */admin.py
