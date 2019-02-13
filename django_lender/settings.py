@@ -16,19 +16,26 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # HEROKU: Configure the STATIC-related parameters:
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+# SECRET_KEY = os.getenv('SECRET_KEY')
+
+# Heroku:
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == 'True'
 
-# Disabled due to Heroku??
+# Heroku:
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+
+# HEROKU - Disabled for deployment??
 # ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
 
@@ -83,18 +90,25 @@ WSGI_APPLICATION = 'django_lender.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME', ''),
+#         'USER': os.getenv('DB_USER', ''),
+#         'PASSWORD': os.getenv('DB_PASSWORD', ''),
+#         'HOST': os.getenv('DB_HOST', ''),
+#         'PORT': 5432,
+#         'TEST': {
+#             'NAME': 'test_db',
+#         }
+#     }
+# }
+
+# Heroku:
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', ''),
-        'USER': os.getenv('DB_USER', ''),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', ''),
-        'PORT': 5432,
-        'TEST': {
-            'NAME': 'test_db',
-        }
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 # Password validation
