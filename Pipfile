@@ -11,6 +11,8 @@ psycopg2-binary = "*"
 coverage = "*"
 django-registration = "*"
 pillow = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.6"
