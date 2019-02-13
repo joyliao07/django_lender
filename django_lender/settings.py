@@ -30,21 +30,21 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv('DEBUG') == 'True'
-DEBUG = False
+DEBUG = os.getenv('DEBUG') == 'True'
+# DEBUG = False
 
 # Heroku:
 # DEBUG = os.environ.get('DEBUG', default=False)
 
 
 # HEROKU - Disabled for deployment??
-# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "0.0.0.0",
-    "127.0.0.1",
-]
+# ALLOWED_HOSTS = [
+#     "localhost",
+#     "0.0.0.0",
+#     "127.0.0.1",
+# ]
 
 # Application definition
 
@@ -58,8 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_registration',
-    'whitenoise.runserver_nostatic',
-    'channels',
+    # 'whitenoise.runserver_nostatic',
+    # 'channels',
 ]
 
 MIDDLEWARE = [
@@ -165,10 +165,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # (http://whitenoise.evans.io/en/stable/django.html#django-middleware):
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Heroku ASGI Setup:
-ASGI_APPLICATION = "django_lender.routing.application"
+# ASGI_APPLICATION = "django_lender.routing.application"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -179,5 +179,5 @@ ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
