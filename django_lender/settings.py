@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_registration',
     'whitenoise.runserver_nostatic',
+    'channels',
 ]
 
 MIDDLEWARE = [
