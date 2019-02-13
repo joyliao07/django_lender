@@ -11,3 +11,6 @@ from channels.routing import get_default_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_lender.settings')
 django.setup()
 application = get_default_application()
+
+# Tutorial Procfile:
+# web: daphne -b 0.0.0.0 -p 8000 django_lender.asgi:application
