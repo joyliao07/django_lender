@@ -11,12 +11,14 @@ daphne==2.2.5
 dj-database-url==0.5.0
 Django==2.1.7
 django-filter==2.0.0
+django-heroku==0.3.1
 django-registration==3.0
 gunicorn==19.9.0
 hyperlink==18.0.0
 idna==2.8
 incremental==17.5.0
 Pillow==5.4.1
+psycopg2==2.7.7
 psycopg2-binary==2.7.7
 PyHamcrest==1.9.0
 python-decouple==3.1
