@@ -161,6 +161,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # (http://whitenoise.evans.io/en/stable/django.html#django-middleware):
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Heroku ASGI Setup:
+ASGI_APPLICATION = "django_lender.routing.application"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
