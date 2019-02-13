@@ -38,8 +38,13 @@ DEBUG = os.getenv('DEBUG') == 'True'
 
 
 # HEROKU - Disabled for deployment??
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
+ALLOWED_HOSTS = [
+    "localhost",
+    "0.0.0.0",
+    "127.0.0.1",
+]
 
 # Application definition
 
