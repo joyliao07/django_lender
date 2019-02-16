@@ -16,25 +16,15 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# HEROKU: Configure the STATIC-related parameters:
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# Heroku:
-# SECRET_KEY = os.environ.get('SECRET_KEY')
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == 'True'
 # DEBUG = False
-
-# Heroku:
-# DEBUG = os.environ.get('DEBUG', default=False)
 
 
 # HEROKU - Disabled for deployment??
@@ -46,8 +36,6 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 #     "127.0.0.1",
 # ]
 
-# Application definition
-
 INSTALLED_APPS = [
     'django_lender',
     'lender_books',
@@ -58,8 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_registration',
-    # 'whitenoise.runserver_nostatic',
-    # 'channels',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'django_lender.urls'
@@ -112,13 +97,6 @@ DATABASES = {
     }
 }
 
-# Heroku:
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=os.getenv('DATABASE_URL')
-#     )
-# }
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -137,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -152,23 +129,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-# HEROKU:
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'static'),
-# )
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-# (http://whitenoise.evans.io/en/stable/django.html#django-middleware):
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Heroku ASGI Setup:
-# ASGI_APPLICATION = "django_lender.routing.application"
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -178,6 +140,3 @@ ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-# import django_heroku
-# django_heroku.settings(locals())
