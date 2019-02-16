@@ -26,15 +26,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG') == 'True'
 # DEBUG = False
 
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
-# HEROKU - Disabled for deployment??
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
-
-# ALLOWED_HOSTS = [
-#     "localhost",
-#     "0.0.0.0",
-#     "127.0.0.1",
-# ]
+# Digital Ocean Deployment setup:
+ALLOWED_HOSTS = ['138.197.194.51']
 
 INSTALLED_APPS = [
     'django_lender',
@@ -82,20 +77,32 @@ WSGI_APPLICATION = 'django_lender.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME', ''),
+#         'USER': os.getenv('DB_USER', ''),
+#         'PASSWORD': os.getenv('DB_PASSWORD', ''),
+#         'HOST': os.getenv('DB_HOST', ''),
+#         'PORT': 5432,
+#         'TEST': {
+#             'NAME': 'test_db',
+#         }
+#     }
+# }
 
+# Digital Ocean database setup:
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', ''),
-        'USER': os.getenv('DB_USER', ''),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', ''),
-        'PORT': 5432,
-        'TEST': {
-            'NAME': 'test_db',
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'urban_prod',
+        'USER': 'u_urban',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
