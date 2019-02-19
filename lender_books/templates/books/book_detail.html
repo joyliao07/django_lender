@@ -13,6 +13,7 @@
 
 <img src="{% static '/assets/{{ book.cover_image }}' %}" alt="bookimage" width="300" height="400"/>
 
+<img src="{{ book.cover_image.url }}" alt="book.cover_image.url">
 
 <p>Status: {{ book.status }}</p>
 <p>Publish year: {{ book.year }}</p>

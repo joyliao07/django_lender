@@ -157,6 +157,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR + '/static/media'
+
+
 # HEROKU:
 # STATICFILES_DIRS = (
 #     os.path.join(PROJECT_ROOT, 'static'),
@@ -167,7 +171,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 
-ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
+ACCOUNT_ACTIVATION_DAYS = 3
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
