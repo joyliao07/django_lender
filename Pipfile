@@ -12,11 +12,7 @@ coverage = "*"
 django-registration = "*"
 pillow = "*"
 gunicorn = "*"
-whitenoise = "*"
-dj-database-url = "*"
-daphne = "*"
 python-decouple = "*"
-channels = "*"
 django-heroku = "*"
 
 [requires]
