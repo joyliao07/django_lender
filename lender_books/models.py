@@ -18,7 +18,7 @@ class Book(models.Model):
     for x in range(1700, 2020):
         years.append((x, x))
 
-    year = models.IntegerField(max_length=48, default='2019', choices=years)
+    year = models.IntegerField(default=2019, choices=years)
 
     STATES = [
         ('available', 'Available'),
