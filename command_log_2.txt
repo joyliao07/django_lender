@@ -1,0 +1,135 @@
+Last login: Sun Feb 17 15:52:58 on ttys003
+➜  ~ ssh root@138.197.194.51
+root@138.197.194.51's password:
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-45-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Feb 18 00:43:32 UTC 2019
+
+  System load:  0.0               Processes:           94
+  Usage of /:   7.5% of 24.06GB   Users logged in:     0
+  Memory usage: 28%               IP address for eth0: 138.197.194.51
+  Swap usage:   0%
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Sun Feb 17 22:14:50 2019 from 65.117.200.46
+root@urban-train:~# exit
+logout
+Connection to 138.197.194.51 closed.
+➜  ~ ssh root@157.230.172.253
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-45-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Feb 18 00:44:22 UTC 2019
+
+  System load:  0.0               Processes:           95
+  Usage of /:   7.2% of 24.06GB   Users logged in:     1
+  Memory usage: 19%               IP address for eth0: 157.230.172.253
+  Swap usage:   0%
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Sun Feb 17 23:12:03 2019 from 173.10.77.94
+root@book-app:~# ls -a
+.  ..  .bashrc  .cache  .cloud-locale-test.skip  .gnupg  .profile  .ssh
+root@book-app:~# cd ~librarian
+root@book-app:/home/librarian# ls
+book_app
+root@book-app:/home/librarian# cd book_app/
+root@book-app:/home/librarian/book_app# ls
+bin  django_lender  include  lib  share
+root@book-app:/home/librarian/book_app# cd django_lender/
+root@book-app:/home/librarian/book_app/django_lender# ls
+Dockerfile  Pipfile       README.md    django_lender   docker-compose.yml  lender_books  requirements.txt  static
+LICENSE     Pipfile.lock  __pycache__  do_settings.py  entrypoint.sh       manage.py     runtime.txt
+root@book-app:/home/librarian/book_app/django_lender# id librarian
+uid=1000(librarian) gid=1000(librarian) groups=1000(librarian),27(sudo)
+root@book-app:/home/librarian/book_app/django_lender# cd ../..
+root@book-app:/home/librarian# ls
+book_app
+root@book-app:/home/librarian# cd book_app/django_lender/
+root@book-app:/home/librarian/book_app/django_lender# ls -a
+.            .editorconfig  .gitignore  Pipfile       __pycache__     docker-compose.yml  manage.py         static
+..           .env           Dockerfile  Pipfile.lock  django_lender   entrypoint.sh       requirements.txt
+.coveragerc  .git           LICENSE     README.md     do_settings.py  lender_books        runtime.txt
+root@book-app:/home/librarian/book_app/django_lender# cd django_lender/
+root@book-app:/home/librarian/book_app/django_lender/django_lender# ls
+__init__.py  __pycache__  settings.py  static  templates  urls.py  views.py  wsgi.py
+root@book-app:/home/librarian/book_app/django_lender/django_lender# nano /etc/supervisor/conf.d/urban-train.conf
+root@book-app:/home/librarian/book_app/django_lender/django_lender# supervisorctl reread
+book-app: available
+root@book-app:/home/librarian/book_app/django_lender/django_lender# supervisorctl update
+book-app: added process group
+root@book-app:/home/librarian/book_app/django_lender/django_lender# supervisorctl status book-app
+book-app                         RUNNING   pid 11736, uptime 0:00:13
+root@book-app:/home/librarian/book_app/django_lender/django_lender# nano /etc/nginx/sites-available/urban-train
+root@book-app:/home/librarian/book_app/django_lender/django_lender# cd /etc/nginx/sites-available
+root@book-app:/etc/nginx/sites-available# ls
+default  urban-train
+root@book-app:/etc/nginx/sites-available# mv urban-train book-app
+root@book-app:/etc/nginx/sites-available# cat book-app
+upstream app_server {
+    server unix:/home/librarian/run/gunicorn.sock fail_timeout=0;
+}
+
+server {
+    listen 80;
+
+    # add here the ip address of your server
+    # or a domain pointing to that ip (like example.com or www.example.com)
+    server_name 157.230.172.253;
+
+    keepalive_timeout 5;
+    client_max_body_size 4G;
+
+    access_log /home/urban/logs/nginx-access.log;
+    error_log /home/urban/logs/nginx-error.log;
+
+    location /static/ {
+        alias /home/urban/static/;
+    }
+
+    # checks for static file, if not found proxy to app
+    location / {
+        try_files $uri @proxy_to_app;
+    }
+
+    location @proxy_to_app {
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_redirect off;
+      proxy_pass http://app_server;
+    }
+}
+root@book-app:/etc/nginx/sites-available# nano book-app
+root@book-app:/etc/nginx/sites-available# ln -s /etc/nginx/sites-available/book-app /etc/nginx/sites-enabled/book-app
+root@book-app:/etc/nginx/sites-available# rm /etc/nginx/sites-enabled/default
+root@book-app:/etc/nginx/sites-available# service nginx restart
+root@book-app:/etc/nginx/sites-available# nano book-app
+root@book-app:/etc/nginx/sites-available# service nginx restart
+root@book-app:/etc/nginx/sites-available# nano book-app
+root@book-app:/etc/nginx/sites-available# service nginx restart
+root@book-app:/etc/nginx/sites-available# nano book-app
+root@book-app:/etc/nginx/sites-available# service nginx restart
+root@book-app:/etc/nginx/sites-available#

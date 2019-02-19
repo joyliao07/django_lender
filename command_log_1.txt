@@ -1,0 +1,1476 @@
+➜  ~ ssh root@157.230.172.253
+The authenticity of host '157.230.172.253 (157.230.172.253)' can't be established.
+ECDSA key fingerprint is SHA256:0XnucUaZ/VC22eVBRFJ6s0byueAB8fI0ooh0A4UKo0c.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '157.230.172.253' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-45-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Feb 17 23:12:02 UTC 2019
+
+  System load:  0.6               Processes:           83
+  Usage of /:   3.9% of 24.06GB   Users logged in:     0
+  Memory usage: 11%               IP address for eth0: 157.230.172.253
+  Swap usage:   0%
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@book-app:~# hostname
+book-app
+root@book-app:~# host 157.230.172.253
+253.172.230.157.in-addr.arpa domain name pointer book-app.
+253.172.230.157.in-addr.arpa domain name pointer book-app.local.
+root@book-app:~# cat /etc/hosts
+# Your system has configured 'manage_etc_hosts' as True.
+# As a result, if you wish for changes to this file to persist
+# then you will need to either
+# a.) make changes to the master file in /etc/cloud/templates/hosts.debian.tmpl
+# b.) change or remove the value of 'manage_etc_hosts' in
+#     /etc/cloud/cloud.cfg or cloud-config from user-data
+#
+127.0.1.1 book-app book-app
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+root@book-app:~# cat /etc/resolv.conf
+# This file is managed by man:systemd-resolved(8). Do not edit.
+#
+# This is a dynamic resolv.conf file for connecting local clients to the
+# internal DNS stub resolver of systemd-resolved. This file lists all
+# configured search domains.
+#
+# Run "systemd-resolve --status" to see details about the uplink DNS servers
+# currently in use.
+#
+# Third party programs must not access this file directly, but only through the
+# symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,
+# replace this symlink by a static file or a different symlink.
+#
+# See man:systemd-resolved.service(8) for details about the supported modes of
+# operation for /etc/resolv.conf.
+
+nameserver 127.0.0.53
+options edns0
+root@book-app:~# host undertow.omnifarious.org
+undertow.omnifarious.org has address 138.68.3.51
+undertow.omnifarious.org has IPv6 address 2604:a880:2:d0::883:8001
+root@book-app:~# sudo apt-get update
+Hit:1 http://mirrors.digitalocean.com/ubuntu bionic InRelease
+Get:2 http://mirrors.digitalocean.com/ubuntu bionic-updates InRelease [88.7 kB]
+Get:3 http://mirrors.digitalocean.com/ubuntu bionic-backports InRelease [74.6 kB]
+Get:4 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Get:5 http://mirrors.digitalocean.com/ubuntu bionic/restricted Sources [5324 B]
+Get:6 http://mirrors.digitalocean.com/ubuntu bionic/main Sources [829 kB]
+Get:7 http://mirrors.digitalocean.com/ubuntu bionic/multiverse Sources [181 kB]
+Get:8 http://mirrors.digitalocean.com/ubuntu bionic/universe Sources [9051 kB]
+Get:9 http://mirrors.digitalocean.com/ubuntu bionic/universe amd64 Packages [8570 kB]
+Get:10 http://mirrors.digitalocean.com/ubuntu bionic/universe Translation-en [4941 kB]
+Get:11 http://mirrors.digitalocean.com/ubuntu bionic/multiverse amd64 Packages [151 kB]
+Get:12 http://mirrors.digitalocean.com/ubuntu bionic/multiverse Translation-en [108 kB]
+Get:13 http://mirrors.digitalocean.com/ubuntu bionic-updates/main Sources [246 kB]
+Get:14 http://mirrors.digitalocean.com/ubuntu bionic-updates/multiverse Sources [4192 B]
+Get:15 http://mirrors.digitalocean.com/ubuntu bionic-updates/universe Sources [129 kB]
+Get:16 http://mirrors.digitalocean.com/ubuntu bionic-updates/restricted Sources [2060 B]
+Get:17 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 Packages [523 kB]
+Get:18 http://mirrors.digitalocean.com/ubuntu bionic-updates/restricted amd64 Packages [6996 B]
+Get:19 http://mirrors.digitalocean.com/ubuntu bionic-updates/universe amd64 Packages [731 kB]
+Get:20 http://mirrors.digitalocean.com/ubuntu bionic-updates/universe Translation-en [186 kB]
+Get:21 http://mirrors.digitalocean.com/ubuntu bionic-updates/multiverse amd64 Packages [6384 B]
+Get:22 http://mirrors.digitalocean.com/ubuntu bionic-updates/multiverse Translation-en [3452 B]
+Get:23 http://mirrors.digitalocean.com/ubuntu bionic-backports/universe Sources [2068 B]
+Get:24 http://mirrors.digitalocean.com/ubuntu bionic-backports/universe amd64 Packages [3472 B]
+Get:25 http://mirrors.digitalocean.com/ubuntu bionic-backports/universe Translation-en [1604 B]
+Get:26 http://security.ubuntu.com/ubuntu bionic-security/multiverse Sources [2308 B]
+Get:27 http://security.ubuntu.com/ubuntu bionic-security/main Sources [76.0 kB]
+Get:28 http://security.ubuntu.com/ubuntu bionic-security/universe Sources [35.1 kB]
+Get:29 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [268 kB]
+Get:30 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [126 kB]
+Get:31 http://security.ubuntu.com/ubuntu bionic-security/universe Translation-en [71.2 kB]
+Get:32 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [3324 B]
+Get:33 http://security.ubuntu.com/ubuntu bionic-security/multiverse Translation-en [1848 B]
+Fetched 26.5 MB in 7s (3733 kB/s)
+Reading package lists... Done
+root@book-app:~# sudo apt-get -y upgrade
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Calculating upgrade... Done
+The following package was automatically installed and is no longer required:
+  grub-pc-bin
+Use 'sudo apt autoremove' to remove it.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+root@book-app:~# sudo apt-get -y install build-essential libpq-dev python3-dev
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  grub-pc-bin
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu cpp cpp-7 dh-python dpkg-dev fakeroot g++ g++-7 gcc gcc-7
+  gcc-7-base libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan4 libatomic1 libbinutils
+  libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libdpkg-perl libexpat1-dev libfakeroot libfile-fcntllock-perl
+  libgcc-7-dev libgomp1 libisl19 libitm1 liblsan0 libmpc3 libmpx2 libpq5 libpython3-dev libpython3.6-dev libquadmath0
+  libstdc++-7-dev libtsan0 libubsan0 linux-libc-dev make manpages-dev python3-distutils python3-lib2to3 python3.6-dev
+Suggested packages:
+  binutils-doc cpp-doc gcc-7-locales debian-keyring g++-multilib g++-7-multilib gcc-7-doc libstdc++6-7-dbg
+  gcc-multilib autoconf automake libtool flex bison gdb gcc-doc gcc-7-multilib libgcc1-dbg libgomp1-dbg libitm1-dbg
+  libatomic1-dbg libasan4-dbg liblsan0-dbg libtsan0-dbg libubsan0-dbg libcilkrts5-dbg libmpx2-dbg libquadmath0-dbg
+  glibc-doc bzr postgresql-doc-10 libstdc++-7-doc make-doc
+The following NEW packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential cpp cpp-7 dh-python dpkg-dev fakeroot g++ g++-7
+  gcc gcc-7 gcc-7-base libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan4 libatomic1
+  libbinutils libc-dev-bin libc6-dev libcc1-0 libcilkrts5 libdpkg-perl libexpat1-dev libfakeroot
+  libfile-fcntllock-perl libgcc-7-dev libgomp1 libisl19 libitm1 liblsan0 libmpc3 libmpx2 libpq-dev libpq5
+  libpython3-dev libpython3.6-dev libquadmath0 libstdc++-7-dev libtsan0 libubsan0 linux-libc-dev make manpages-dev
+  python3-dev python3-distutils python3-lib2to3 python3.6-dev
+0 upgraded, 50 newly installed, 0 to remove and 0 not upgraded.
+Need to get 83.2 MB of archives.
+After this operation, 242 MB of additional disk space will be used.
+Get:1 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 binutils-common amd64 2.30-21ubuntu1~18.04 [193 kB]
+Get:2 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libbinutils amd64 2.30-21ubuntu1~18.04 [502 kB]
+Get:3 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.30-21ubuntu1~18.04 [1855 kB]
+Get:4 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 binutils amd64 2.30-21ubuntu1~18.04 [3392 B]
+Get:5 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libc-dev-bin amd64 2.27-3ubuntu1 [71.8 kB]
+Get:6 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 linux-libc-dev amd64 4.15.0-45.48 [1001 kB]
+Get:7 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libc6-dev amd64 2.27-3ubuntu1 [2587 kB]
+Get:8 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 gcc-7-base amd64 7.3.0-27ubuntu1~18.04 [18.9 kB]
+Get:9 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libisl19 amd64 0.19-1 [551 kB]
+Get:10 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libmpc3 amd64 1.1.0-1 [40.8 kB]
+Get:11 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 cpp-7 amd64 7.3.0-27ubuntu1~18.04 [6738 kB]
+Get:12 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 cpp amd64 4:7.3.0-3ubuntu2.1 [27.6 kB]
+Get:13 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libcc1-0 amd64 8.2.0-1ubuntu2~18.04 [39.5 kB]
+Get:14 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libgomp1 amd64 8.2.0-1ubuntu2~18.04 [76.4 kB]
+Get:15 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libitm1 amd64 8.2.0-1ubuntu2~18.04 [28.1 kB]
+Get:16 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libatomic1 amd64 8.2.0-1ubuntu2~18.04 [9064 B]
+Get:17 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libasan4 amd64 7.3.0-27ubuntu1~18.04 [358 kB]
+Get:18 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 liblsan0 amd64 8.2.0-1ubuntu2~18.04 [132 kB]
+Get:19 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libtsan0 amd64 8.2.0-1ubuntu2~18.04 [288 kB]
+Get:20 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libubsan0 amd64 7.3.0-27ubuntu1~18.04 [126 kB]
+Get:21 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libcilkrts5 amd64 7.3.0-27ubuntu1~18.04 [42.5 kB]
+Get:22 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libmpx2 amd64 8.2.0-1ubuntu2~18.04 [11.7 kB]
+Get:23 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libquadmath0 amd64 8.2.0-1ubuntu2~18.04 [133 kB]
+Get:24 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libgcc-7-dev amd64 7.3.0-27ubuntu1~18.04 [2380 kB]
+Get:25 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 gcc-7 amd64 7.3.0-27ubuntu1~18.04 [7455 kB]
+Get:26 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 gcc amd64 4:7.3.0-3ubuntu2.1 [5184 B]
+Get:27 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libstdc++-7-dev amd64 7.3.0-27ubuntu1~18.04 [1463 kB]
+Get:28 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 g++-7 amd64 7.3.0-27ubuntu1~18.04 [7570 kB]
+Get:29 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 g++ amd64 4:7.3.0-3ubuntu2.1 [1572 B]
+Get:30 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 make amd64 4.1-9.1ubuntu1 [154 kB]
+Get:31 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libdpkg-perl all 1.19.0.5ubuntu2.1 [211 kB]
+Get:32 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 dpkg-dev all 1.19.0.5ubuntu2.1 [608 kB]
+Get:33 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 build-essential amd64 12.4ubuntu1 [4758 B]
+Get:34 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 python3-lib2to3 all 3.6.7-1~18.04 [76.5 kB]
+Get:35 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 python3-distutils all 3.6.7-1~18.04 [141 kB]
+Get:36 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 dh-python all 3.20180325ubuntu2 [89.2 kB]
+Get:37 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libfakeroot amd64 1.22-2ubuntu1 [25.9 kB]
+Get:38 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 fakeroot amd64 1.22-2ubuntu1 [62.3 kB]
+Get:39 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libalgorithm-diff-perl all 1.19.03-1 [47.6 kB]
+Get:40 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libalgorithm-diff-xs-perl amd64 0.04-5 [11.1 kB]
+Get:41 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libalgorithm-merge-perl all 0.08-3 [12.0 kB]
+Get:42 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libexpat1-dev amd64 2.2.5-3 [122 kB]
+Get:43 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libfile-fcntllock-perl amd64 0.22-3build2 [33.2 kB]
+Get:44 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libpq5 amd64 10.6-0ubuntu0.18.04.1 [107 kB]
+Get:45 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libpq-dev amd64 10.6-0ubuntu0.18.04.1 [217 kB]
+Get:46 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libpython3.6-dev amd64 3.6.7-1~18.04 [44.8 MB]
+Get:47 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libpython3-dev amd64 3.6.7-1~18.04 [7328 B]
+Get:48 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 manpages-dev all 4.15-1 [2217 kB]
+Get:49 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 python3.6-dev amd64 3.6.7-1~18.04 [508 kB]
+Get:50 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 python3-dev amd64 3.6.7-1~18.04 [1288 B]
+Fetched 83.2 MB in 54s (1539 kB/s)
+Extracting templates from packages: 100%
+Selecting previously unselected package binutils-common:amd64.
+(Reading database ... 60071 files and directories currently installed.)
+Preparing to unpack .../00-binutils-common_2.30-21ubuntu1~18.04_amd64.deb ...
+Unpacking binutils-common:amd64 (2.30-21ubuntu1~18.04) ...
+Selecting previously unselected package libbinutils:amd64.
+Preparing to unpack .../01-libbinutils_2.30-21ubuntu1~18.04_amd64.deb ...
+Unpacking libbinutils:amd64 (2.30-21ubuntu1~18.04) ...
+Selecting previously unselected package binutils-x86-64-linux-gnu.
+Preparing to unpack .../02-binutils-x86-64-linux-gnu_2.30-21ubuntu1~18.04_amd64.deb ...
+Unpacking binutils-x86-64-linux-gnu (2.30-21ubuntu1~18.04) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../03-binutils_2.30-21ubuntu1~18.04_amd64.deb ...
+Unpacking binutils (2.30-21ubuntu1~18.04) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../04-libc-dev-bin_2.27-3ubuntu1_amd64.deb ...
+Unpacking libc-dev-bin (2.27-3ubuntu1) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../05-linux-libc-dev_4.15.0-45.48_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (4.15.0-45.48) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../06-libc6-dev_2.27-3ubuntu1_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.27-3ubuntu1) ...
+Selecting previously unselected package gcc-7-base:amd64.
+Preparing to unpack .../07-gcc-7-base_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking gcc-7-base:amd64 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package libisl19:amd64.
+Preparing to unpack .../08-libisl19_0.19-1_amd64.deb ...
+Unpacking libisl19:amd64 (0.19-1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../09-libmpc3_1.1.0-1_amd64.deb ...
+Unpacking libmpc3:amd64 (1.1.0-1) ...
+Selecting previously unselected package cpp-7.
+Preparing to unpack .../10-cpp-7_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking cpp-7 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../11-cpp_4%3a7.3.0-3ubuntu2.1_amd64.deb ...
+Unpacking cpp (4:7.3.0-3ubuntu2.1) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../12-libcc1-0_8.2.0-1ubuntu2~18.04_amd64.deb ...
+Unpacking libcc1-0:amd64 (8.2.0-1ubuntu2~18.04) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../13-libgomp1_8.2.0-1ubuntu2~18.04_amd64.deb ...
+Unpacking libgomp1:amd64 (8.2.0-1ubuntu2~18.04) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../14-libitm1_8.2.0-1ubuntu2~18.04_amd64.deb ...
+Unpacking libitm1:amd64 (8.2.0-1ubuntu2~18.04) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../15-libatomic1_8.2.0-1ubuntu2~18.04_amd64.deb ...
+Unpacking libatomic1:amd64 (8.2.0-1ubuntu2~18.04) ...
+Selecting previously unselected package libasan4:amd64.
+Preparing to unpack .../16-libasan4_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking libasan4:amd64 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../17-liblsan0_8.2.0-1ubuntu2~18.04_amd64.deb ...
+Unpacking liblsan0:amd64 (8.2.0-1ubuntu2~18.04) ...
+Selecting previously unselected package libtsan0:amd64.
+Preparing to unpack .../18-libtsan0_8.2.0-1ubuntu2~18.04_amd64.deb ...
+Unpacking libtsan0:amd64 (8.2.0-1ubuntu2~18.04) ...
+Selecting previously unselected package libubsan0:amd64.
+Preparing to unpack .../19-libubsan0_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking libubsan0:amd64 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package libcilkrts5:amd64.
+Preparing to unpack .../20-libcilkrts5_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking libcilkrts5:amd64 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package libmpx2:amd64.
+Preparing to unpack .../21-libmpx2_8.2.0-1ubuntu2~18.04_amd64.deb ...
+Unpacking libmpx2:amd64 (8.2.0-1ubuntu2~18.04) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../22-libquadmath0_8.2.0-1ubuntu2~18.04_amd64.deb ...
+Unpacking libquadmath0:amd64 (8.2.0-1ubuntu2~18.04) ...
+Selecting previously unselected package libgcc-7-dev:amd64.
+Preparing to unpack .../23-libgcc-7-dev_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking libgcc-7-dev:amd64 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package gcc-7.
+Preparing to unpack .../24-gcc-7_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking gcc-7 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../25-gcc_4%3a7.3.0-3ubuntu2.1_amd64.deb ...
+Unpacking gcc (4:7.3.0-3ubuntu2.1) ...
+Selecting previously unselected package libstdc++-7-dev:amd64.
+Preparing to unpack .../26-libstdc++-7-dev_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking libstdc++-7-dev:amd64 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package g++-7.
+Preparing to unpack .../27-g++-7_7.3.0-27ubuntu1~18.04_amd64.deb ...
+Unpacking g++-7 (7.3.0-27ubuntu1~18.04) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../28-g++_4%3a7.3.0-3ubuntu2.1_amd64.deb ...
+Unpacking g++ (4:7.3.0-3ubuntu2.1) ...
+Selecting previously unselected package make.
+Preparing to unpack .../29-make_4.1-9.1ubuntu1_amd64.deb ...
+Unpacking make (4.1-9.1ubuntu1) ...
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../30-libdpkg-perl_1.19.0.5ubuntu2.1_all.deb ...
+Unpacking libdpkg-perl (1.19.0.5ubuntu2.1) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../31-dpkg-dev_1.19.0.5ubuntu2.1_all.deb ...
+Unpacking dpkg-dev (1.19.0.5ubuntu2.1) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../32-build-essential_12.4ubuntu1_amd64.deb ...
+Unpacking build-essential (12.4ubuntu1) ...
+Selecting previously unselected package python3-lib2to3.
+Preparing to unpack .../33-python3-lib2to3_3.6.7-1~18.04_all.deb ...
+Unpacking python3-lib2to3 (3.6.7-1~18.04) ...
+Selecting previously unselected package python3-distutils.
+Preparing to unpack .../34-python3-distutils_3.6.7-1~18.04_all.deb ...
+Unpacking python3-distutils (3.6.7-1~18.04) ...
+Selecting previously unselected package dh-python.
+Preparing to unpack .../35-dh-python_3.20180325ubuntu2_all.deb ...
+Unpacking dh-python (3.20180325ubuntu2) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../36-libfakeroot_1.22-2ubuntu1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.22-2ubuntu1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../37-fakeroot_1.22-2ubuntu1_amd64.deb ...
+Unpacking fakeroot (1.22-2ubuntu1) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../38-libalgorithm-diff-perl_1.19.03-1_all.deb ...
+Unpacking libalgorithm-diff-perl (1.19.03-1) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+Preparing to unpack .../39-libalgorithm-diff-xs-perl_0.04-5_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl (0.04-5) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../40-libalgorithm-merge-perl_0.08-3_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-3) ...
+Selecting previously unselected package libexpat1-dev:amd64.
+Preparing to unpack .../41-libexpat1-dev_2.2.5-3_amd64.deb ...
+Unpacking libexpat1-dev:amd64 (2.2.5-3) ...
+Selecting previously unselected package libfile-fcntllock-perl.
+Preparing to unpack .../42-libfile-fcntllock-perl_0.22-3build2_amd64.deb ...
+Unpacking libfile-fcntllock-perl (0.22-3build2) ...
+Selecting previously unselected package libpq5:amd64.
+Preparing to unpack .../43-libpq5_10.6-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking libpq5:amd64 (10.6-0ubuntu0.18.04.1) ...
+Selecting previously unselected package libpq-dev.
+Preparing to unpack .../44-libpq-dev_10.6-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking libpq-dev (10.6-0ubuntu0.18.04.1) ...
+Selecting previously unselected package libpython3.6-dev:amd64.
+Preparing to unpack .../45-libpython3.6-dev_3.6.7-1~18.04_amd64.deb ...
+Unpacking libpython3.6-dev:amd64 (3.6.7-1~18.04) ...
+Selecting previously unselected package libpython3-dev:amd64.
+Preparing to unpack .../46-libpython3-dev_3.6.7-1~18.04_amd64.deb ...
+Unpacking libpython3-dev:amd64 (3.6.7-1~18.04) ...
+Selecting previously unselected package manpages-dev.
+Preparing to unpack .../47-manpages-dev_4.15-1_all.deb ...
+Unpacking manpages-dev (4.15-1) ...
+Selecting previously unselected package python3.6-dev.
+Preparing to unpack .../48-python3.6-dev_3.6.7-1~18.04_amd64.deb ...
+Unpacking python3.6-dev (3.6.7-1~18.04) ...
+Selecting previously unselected package python3-dev.
+Preparing to unpack .../49-python3-dev_3.6.7-1~18.04_amd64.deb ...
+Unpacking python3-dev (3.6.7-1~18.04) ...
+Setting up libquadmath0:amd64 (8.2.0-1ubuntu2~18.04) ...
+Setting up libgomp1:amd64 (8.2.0-1ubuntu2~18.04) ...
+Setting up libatomic1:amd64 (8.2.0-1ubuntu2~18.04) ...
+Setting up libcc1-0:amd64 (8.2.0-1ubuntu2~18.04) ...
+Setting up make (4.1-9.1ubuntu1) ...
+Setting up libtsan0:amd64 (8.2.0-1ubuntu2~18.04) ...
+Setting up linux-libc-dev:amd64 (4.15.0-45.48) ...
+Setting up libdpkg-perl (1.19.0.5ubuntu2.1) ...
+Setting up liblsan0:amd64 (8.2.0-1ubuntu2~18.04) ...
+Setting up gcc-7-base:amd64 (7.3.0-27ubuntu1~18.04) ...
+Setting up binutils-common:amd64 (2.30-21ubuntu1~18.04) ...
+Setting up libfile-fcntllock-perl (0.22-3build2) ...
+Setting up libmpx2:amd64 (8.2.0-1ubuntu2~18.04) ...
+Setting up libpq5:amd64 (10.6-0ubuntu0.18.04.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Setting up libfakeroot:amd64 (1.22-2ubuntu1) ...
+Setting up libalgorithm-diff-perl (1.19.03-1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Setting up libmpc3:amd64 (1.1.0-1) ...
+Setting up libc-dev-bin (2.27-3ubuntu1) ...
+Setting up python3-lib2to3 (3.6.7-1~18.04) ...
+Setting up manpages-dev (4.15-1) ...
+Setting up libc6-dev:amd64 (2.27-3ubuntu1) ...
+Setting up python3-distutils (3.6.7-1~18.04) ...
+Setting up libitm1:amd64 (8.2.0-1ubuntu2~18.04) ...
+Setting up libisl19:amd64 (0.19-1) ...
+Setting up libpq-dev (10.6-0ubuntu0.18.04.1) ...
+Setting up libasan4:amd64 (7.3.0-27ubuntu1~18.04) ...
+Setting up libbinutils:amd64 (2.30-21ubuntu1~18.04) ...
+Setting up libcilkrts5:amd64 (7.3.0-27ubuntu1~18.04) ...
+Setting up libubsan0:amd64 (7.3.0-27ubuntu1~18.04) ...
+Setting up fakeroot (1.22-2ubuntu1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up libgcc-7-dev:amd64 (7.3.0-27ubuntu1~18.04) ...
+Setting up cpp-7 (7.3.0-27ubuntu1~18.04) ...
+Setting up libstdc++-7-dev:amd64 (7.3.0-27ubuntu1~18.04) ...
+Setting up libalgorithm-merge-perl (0.08-3) ...
+Setting up libalgorithm-diff-xs-perl (0.04-5) ...
+Setting up libexpat1-dev:amd64 (2.2.5-3) ...
+Setting up dh-python (3.20180325ubuntu2) ...
+Setting up binutils-x86-64-linux-gnu (2.30-21ubuntu1~18.04) ...
+Setting up cpp (4:7.3.0-3ubuntu2.1) ...
+Setting up libpython3.6-dev:amd64 (3.6.7-1~18.04) ...
+Setting up binutils (2.30-21ubuntu1~18.04) ...
+Setting up python3.6-dev (3.6.7-1~18.04) ...
+Setting up libpython3-dev:amd64 (3.6.7-1~18.04) ...
+Setting up gcc-7 (7.3.0-27ubuntu1~18.04) ...
+Setting up g++-7 (7.3.0-27ubuntu1~18.04) ...
+Setting up python3-dev (3.6.7-1~18.04) ...
+Setting up gcc (4:7.3.0-3ubuntu2.1) ...
+Setting up dpkg-dev (1.19.0.5ubuntu2.1) ...
+Setting up g++ (4:7.3.0-3ubuntu2.1) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up build-essential (12.4ubuntu1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+root@book-app:~# sudo apt-get -y install postgresql postgresql-contrib
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  grub-pc-bin
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  libsensors4 postgresql-10 postgresql-client-10 postgresql-client-common postgresql-common ssl-cert sysstat
+Suggested packages:
+  lm-sensors postgresql-doc locales-all postgresql-doc-10 libjson-perl openssl-blacklist isag
+The following NEW packages will be installed:
+  libsensors4 postgresql postgresql-10 postgresql-client-10 postgresql-client-common postgresql-common
+  postgresql-contrib ssl-cert sysstat
+0 upgraded, 9 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5227 kB of archives.
+After this operation, 20.6 MB of additional disk space will be used.
+Get:1 http://lon1.mirrors.digitalocean.com/ubuntu bionic/main amd64 libsensors4 amd64 1:3.4.0-4 [28.8 kB]
+Get:2 http://lon1.mirrors.digitalocean.com/ubuntu bionic/main amd64 postgresql-client-common all 190 [29.5 kB]
+Get:3 http://lon1.mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 postgresql-client-10 amd64 10.6-0ubuntu0.18.04.1 [934 kB]
+Get:4 http://lon1.mirrors.digitalocean.com/ubuntu bionic/main amd64 ssl-cert all 1.0.39 [17.0 kB]
+Get:5 http://lon1.mirrors.digitalocean.com/ubuntu bionic/main amd64 postgresql-common all 190 [157 kB]
+Get:6 http://lon1.mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 postgresql-10 amd64 10.6-0ubuntu0.18.04.1 [3754 kB]
+Get:7 http://lon1.mirrors.digitalocean.com/ubuntu bionic/main amd64 postgresql all 10+190 [5784 B]
+Get:8 http://lon1.mirrors.digitalocean.com/ubuntu bionic/main amd64 postgresql-contrib all 10+190 [5796 B]
+Get:9 http://lon1.mirrors.digitalocean.com/ubuntu bionic/main amd64 sysstat amd64 11.6.1-1 [295 kB]
+Fetched 5227 kB in 3s (1775 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package libsensors4:amd64.
+(Reading database ... 66082 files and directories currently installed.)
+Preparing to unpack .../0-libsensors4_1%3a3.4.0-4_amd64.deb ...
+Unpacking libsensors4:amd64 (1:3.4.0-4) ...
+Selecting previously unselected package postgresql-client-common.
+Preparing to unpack .../1-postgresql-client-common_190_all.deb ...
+Unpacking postgresql-client-common (190) ...
+Selecting previously unselected package postgresql-client-10.
+Preparing to unpack .../2-postgresql-client-10_10.6-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking postgresql-client-10 (10.6-0ubuntu0.18.04.1) ...
+Selecting previously unselected package ssl-cert.
+Preparing to unpack .../3-ssl-cert_1.0.39_all.deb ...
+Unpacking ssl-cert (1.0.39) ...
+Selecting previously unselected package postgresql-common.
+Preparing to unpack .../4-postgresql-common_190_all.deb ...
+Adding 'diversion of /usr/bin/pg_config to /usr/bin/pg_config.libpq-dev by postgresql-common'
+Unpacking postgresql-common (190) ...
+Selecting previously unselected package postgresql-10.
+Preparing to unpack .../5-postgresql-10_10.6-0ubuntu0.18.04.1_amd64.deb ...
+Unpacking postgresql-10 (10.6-0ubuntu0.18.04.1) ...
+Selecting previously unselected package postgresql.
+Preparing to unpack .../6-postgresql_10+190_all.deb ...
+Unpacking postgresql (10+190) ...
+Selecting previously unselected package postgresql-contrib.
+Preparing to unpack .../7-postgresql-contrib_10+190_all.deb ...
+Unpacking postgresql-contrib (10+190) ...
+Selecting previously unselected package sysstat.
+Preparing to unpack .../8-sysstat_11.6.1-1_amd64.deb ...
+Unpacking sysstat (11.6.1-1) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Setting up ssl-cert (1.0.39) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Setting up postgresql-client-common (190) ...
+Processing triggers for systemd (237-3ubuntu10.12) ...
+Setting up postgresql-common (190) ...
+Adding user postgres to group ssl-cert
+
+Creating config file /etc/postgresql-common/createcluster.conf with new version
+Building PostgreSQL dictionaries from installed myspell/hunspell packages...
+Removing obsolete dictionary files:
+Created symlink /etc/systemd/system/multi-user.target.wants/postgresql.service → /lib/systemd/system/postgresql.service.
+Setting up libsensors4:amd64 (1:3.4.0-4) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Setting up postgresql-client-10 (10.6-0ubuntu0.18.04.1) ...
+update-alternatives: using /usr/share/postgresql/10/man/man1/psql.1.gz to provide /usr/share/man/man1/psql.1.gz (psql.1.gz) in auto mode
+Setting up sysstat (11.6.1-1) ...
+
+Creating config file /etc/default/sysstat with new version
+update-alternatives: using /usr/bin/sar.sysstat to provide /usr/bin/sar (sar) in auto mode
+Created symlink /etc/systemd/system/multi-user.target.wants/sysstat.service → /lib/systemd/system/sysstat.service.
+Setting up postgresql-10 (10.6-0ubuntu0.18.04.1) ...
+Creating new PostgreSQL cluster 10/main ...
+/usr/lib/postgresql/10/bin/initdb -D /var/lib/postgresql/10/main --auth-local peer --auth-host md5
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "C.UTF-8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/10/main ... ok
+creating subdirectories ... ok
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting dynamic shared memory implementation ... posix
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+Success. You can now start the database server using:
+
+    /usr/lib/postgresql/10/bin/pg_ctl -D /var/lib/postgresql/10/main -l logfile start
+
+Ver Cluster Port Status Owner    Data directory              Log file
+10  main    5432 down   postgres /var/lib/postgresql/10/main /var/log/postgresql/postgresql-10-main.log
+update-alternatives: using /usr/share/postgresql/10/man/man1/postmaster.1.gz to provide /usr/share/man/man1/postmaster.1.gz (postmaster.1.gz) in auto mode
+Setting up postgresql (10+190) ...
+Setting up postgresql-contrib (10+190) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Processing triggers for systemd (237-3ubuntu10.12) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+root@book-app:~# sudo apt-get -y install nginx
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  grub-pc-bin
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0 libjpeg-turbo8 libjpeg8 libnginx-mod-http-geoip
+  libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5 libwebp6
+  libxpm4 nginx-common nginx-core
+Suggested packages:
+  libgd-tools fcgiwrap nginx-doc
+The following NEW packages will be installed:
+  fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0 libjpeg-turbo8 libjpeg8 libnginx-mod-http-geoip
+  libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5 libwebp6
+  libxpm4 nginx nginx-common nginx-core
+0 upgraded, 18 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2461 kB of archives.
+After this operation, 8194 kB of additional disk space will be used.
+Get:1 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libjpeg-turbo8 amd64 1.5.2-0ubuntu5.18.04.1 [110 kB]
+Get:2 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 fonts-dejavu-core all 2.37-1 [1041 kB]
+Get:3 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 fontconfig-config all 2.12.6-0ubuntu2 [55.8 kB]
+Get:4 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libfontconfig1 amd64 2.12.6-0ubuntu2 [137 kB]
+Get:5 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2194 B]
+Get:6 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libjbig0 amd64 2.1-3.1build1 [26.7 kB]
+Get:7 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libtiff5 amd64 4.0.9-5ubuntu0.1 [152 kB]
+Get:8 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libwebp6 amd64 0.6.1-2 [185 kB]
+Get:9 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libxpm4 amd64 1:3.5.12-1 [34.0 kB]
+Get:10 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libgd3 amd64 2.2.5-4ubuntu0.2 [119 kB]
+Get:11 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 nginx-common all 1.14.0-0ubuntu1.2 [37.4 kB]
+Get:12 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-geoip amd64 1.14.0-0ubuntu1.2 [11.2 kB]
+Get:13 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-image-filter amd64 1.14.0-0ubuntu1.2 [14.5 kB]
+Get:14 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libnginx-mod-http-xslt-filter amd64 1.14.0-0ubuntu1.2 [13.0 kB]
+Get:15 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libnginx-mod-mail amd64 1.14.0-0ubuntu1.2 [41.8 kB]
+Get:16 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libnginx-mod-stream amd64 1.14.0-0ubuntu1.2 [63.6 kB]
+Get:17 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 nginx-core amd64 1.14.0-0ubuntu1.2 [413 kB]
+Get:18 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 nginx all 1.14.0-0ubuntu1.2 [3596 B]
+Fetched 2461 kB in 4s (576 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package libjpeg-turbo8:amd64.
+(Reading database ... 66893 files and directories currently installed.)
+Preparing to unpack .../00-libjpeg-turbo8_1.5.2-0ubuntu5.18.04.1_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.1) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../01-fonts-dejavu-core_2.37-1_all.deb ...
+Unpacking fonts-dejavu-core (2.37-1) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../02-fontconfig-config_2.12.6-0ubuntu2_all.deb ...
+Unpacking fontconfig-config (2.12.6-0ubuntu2) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../03-libfontconfig1_2.12.6-0ubuntu2_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.12.6-0ubuntu2) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../04-libjpeg8_8c-2ubuntu8_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...
+Selecting previously unselected package libjbig0:amd64.
+Preparing to unpack .../05-libjbig0_2.1-3.1build1_amd64.deb ...
+Unpacking libjbig0:amd64 (2.1-3.1build1) ...
+Selecting previously unselected package libtiff5:amd64.
+Preparing to unpack .../06-libtiff5_4.0.9-5ubuntu0.1_amd64.deb ...
+Unpacking libtiff5:amd64 (4.0.9-5ubuntu0.1) ...
+Selecting previously unselected package libwebp6:amd64.
+Preparing to unpack .../07-libwebp6_0.6.1-2_amd64.deb ...
+Unpacking libwebp6:amd64 (0.6.1-2) ...
+Selecting previously unselected package libxpm4:amd64.
+Preparing to unpack .../08-libxpm4_1%3a3.5.12-1_amd64.deb ...
+Unpacking libxpm4:amd64 (1:3.5.12-1) ...
+Selecting previously unselected package libgd3:amd64.
+Preparing to unpack .../09-libgd3_2.2.5-4ubuntu0.2_amd64.deb ...
+Unpacking libgd3:amd64 (2.2.5-4ubuntu0.2) ...
+Selecting previously unselected package nginx-common.
+Preparing to unpack .../10-nginx-common_1.14.0-0ubuntu1.2_all.deb ...
+Unpacking nginx-common (1.14.0-0ubuntu1.2) ...
+Selecting previously unselected package libnginx-mod-http-geoip.
+Preparing to unpack .../11-libnginx-mod-http-geoip_1.14.0-0ubuntu1.2_amd64.deb ...
+Unpacking libnginx-mod-http-geoip (1.14.0-0ubuntu1.2) ...
+Selecting previously unselected package libnginx-mod-http-image-filter.
+Preparing to unpack .../12-libnginx-mod-http-image-filter_1.14.0-0ubuntu1.2_amd64.deb ...
+Unpacking libnginx-mod-http-image-filter (1.14.0-0ubuntu1.2) ...
+Selecting previously unselected package libnginx-mod-http-xslt-filter.
+Preparing to unpack .../13-libnginx-mod-http-xslt-filter_1.14.0-0ubuntu1.2_amd64.deb ...
+Unpacking libnginx-mod-http-xslt-filter (1.14.0-0ubuntu1.2) ...
+Selecting previously unselected package libnginx-mod-mail.
+Preparing to unpack .../14-libnginx-mod-mail_1.14.0-0ubuntu1.2_amd64.deb ...
+Unpacking libnginx-mod-mail (1.14.0-0ubuntu1.2) ...
+Selecting previously unselected package libnginx-mod-stream.
+Preparing to unpack .../15-libnginx-mod-stream_1.14.0-0ubuntu1.2_amd64.deb ...
+Unpacking libnginx-mod-stream (1.14.0-0ubuntu1.2) ...
+Selecting previously unselected package nginx-core.
+Preparing to unpack .../16-nginx-core_1.14.0-0ubuntu1.2_amd64.deb ...
+Unpacking nginx-core (1.14.0-0ubuntu1.2) ...
+Selecting previously unselected package nginx.
+Preparing to unpack .../17-nginx_1.14.0-0ubuntu1.2_all.deb ...
+Unpacking nginx (1.14.0-0ubuntu1.2) ...
+Processing triggers for ufw (0.35-5) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Setting up libjbig0:amd64 (2.1-3.1build1) ...
+Setting up fonts-dejavu-core (2.37-1) ...
+Setting up nginx-common (1.14.0-0ubuntu1.2) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
+Setting up libjpeg-turbo8:amd64 (1.5.2-0ubuntu5.18.04.1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Processing triggers for systemd (237-3ubuntu10.12) ...
+Setting up libnginx-mod-mail (1.14.0-0ubuntu1.2) ...
+Setting up libxpm4:amd64 (1:3.5.12-1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Setting up libnginx-mod-http-xslt-filter (1.14.0-0ubuntu1.2) ...
+Setting up libnginx-mod-http-geoip (1.14.0-0ubuntu1.2) ...
+Setting up libwebp6:amd64 (0.6.1-2) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu8) ...
+Setting up fontconfig-config (2.12.6-0ubuntu2) ...
+Setting up libnginx-mod-stream (1.14.0-0ubuntu1.2) ...
+Setting up libtiff5:amd64 (4.0.9-5ubuntu0.1) ...
+Setting up libfontconfig1:amd64 (2.12.6-0ubuntu2) ...
+Setting up libgd3:amd64 (2.2.5-4ubuntu0.2) ...
+Setting up libnginx-mod-http-image-filter (1.14.0-0ubuntu1.2) ...
+Setting up nginx-core (1.14.0-0ubuntu1.2) ...
+Setting up nginx (1.14.0-0ubuntu1.2) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Processing triggers for ufw (0.35-5) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+root@book-app:~# sudo apt-get -y install supervisor
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  grub-pc-bin
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python python-meld3 python-minimal python-pkg-resources
+  python2.7 python2.7-minimal
+Suggested packages:
+  python-doc python-tk python-setuptools python2.7-doc binfmt-support supervisor-doc
+The following NEW packages will be installed:
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python python-meld3 python-minimal python-pkg-resources
+  python2.7 python2.7-minimal supervisor
+0 upgraded, 10 newly installed, 0 to remove and 0 not upgraded.
+Need to get 4380 kB of archives.
+After this operation, 18.9 MB of additional disk space will be used.
+Get:1 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libpython2.7-minimal amd64 2.7.15~rc1-1ubuntu0.1 [334 kB]
+Get:2 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 python2.7-minimal amd64 2.7.15~rc1-1ubuntu0.1 [1304 kB]
+Get:3 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 python-minimal amd64 2.7.15~rc1-1 [28.1 kB]
+Get:4 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 libpython2.7-stdlib amd64 2.7.15~rc1-1ubuntu0.1 [1912 kB]
+Get:5 http://mirrors.digitalocean.com/ubuntu bionic-updates/main amd64 python2.7 amd64 2.7.15~rc1-1ubuntu0.1 [238 kB]
+Get:6 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 libpython-stdlib amd64 2.7.15~rc1-1 [7620 B]
+Get:7 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 python amd64 2.7.15~rc1-1 [140 kB]
+Get:8 http://mirrors.digitalocean.com/ubuntu bionic/main amd64 python-pkg-resources all 39.0.1-2 [128 kB]
+Get:9 http://mirrors.digitalocean.com/ubuntu bionic/universe amd64 python-meld3 all 1.0.2-2 [30.9 kB]
+Get:10 http://mirrors.digitalocean.com/ubuntu bionic/universe amd64 supervisor all 3.3.1-1.1 [256 kB]
+Fetched 4380 kB in 3s (1271 kB/s)
+Selecting previously unselected package libpython2.7-minimal:amd64.
+(Reading database ... 67129 files and directories currently installed.)
+Preparing to unpack .../0-libpython2.7-minimal_2.7.15~rc1-1ubuntu0.1_amd64.deb ...
+Unpacking libpython2.7-minimal:amd64 (2.7.15~rc1-1ubuntu0.1) ...
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack .../1-python2.7-minimal_2.7.15~rc1-1ubuntu0.1_amd64.deb ...
+Unpacking python2.7-minimal (2.7.15~rc1-1ubuntu0.1) ...
+Selecting previously unselected package python-minimal.
+Preparing to unpack .../2-python-minimal_2.7.15~rc1-1_amd64.deb ...
+Unpacking python-minimal (2.7.15~rc1-1) ...
+Selecting previously unselected package libpython2.7-stdlib:amd64.
+Preparing to unpack .../3-libpython2.7-stdlib_2.7.15~rc1-1ubuntu0.1_amd64.deb ...
+Unpacking libpython2.7-stdlib:amd64 (2.7.15~rc1-1ubuntu0.1) ...
+Selecting previously unselected package python2.7.
+Preparing to unpack .../4-python2.7_2.7.15~rc1-1ubuntu0.1_amd64.deb ...
+Unpacking python2.7 (2.7.15~rc1-1ubuntu0.1) ...
+Selecting previously unselected package libpython-stdlib:amd64.
+Preparing to unpack .../5-libpython-stdlib_2.7.15~rc1-1_amd64.deb ...
+Unpacking libpython-stdlib:amd64 (2.7.15~rc1-1) ...
+Setting up libpython2.7-minimal:amd64 (2.7.15~rc1-1ubuntu0.1) ...
+Setting up python2.7-minimal (2.7.15~rc1-1ubuntu0.1) ...
+Linking and byte-compiling packages for runtime python2.7...
+Setting up python-minimal (2.7.15~rc1-1) ...
+Selecting previously unselected package python.
+(Reading database ... 67876 files and directories currently installed.)
+Preparing to unpack .../python_2.7.15~rc1-1_amd64.deb ...
+Unpacking python (2.7.15~rc1-1) ...
+Selecting previously unselected package python-pkg-resources.
+Preparing to unpack .../python-pkg-resources_39.0.1-2_all.deb ...
+Unpacking python-pkg-resources (39.0.1-2) ...
+Selecting previously unselected package python-meld3.
+Preparing to unpack .../python-meld3_1.0.2-2_all.deb ...
+Unpacking python-meld3 (1.0.2-2) ...
+Selecting previously unselected package supervisor.
+Preparing to unpack .../supervisor_3.3.1-1.1_all.deb ...
+Unpacking supervisor (3.3.1-1.1) ...
+Processing triggers for mime-support (3.60ubuntu1) ...
+Processing triggers for ureadahead (0.100.0-20) ...
+Processing triggers for systemd (237-3ubuntu10.12) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+Setting up libpython2.7-stdlib:amd64 (2.7.15~rc1-1ubuntu0.1) ...
+Setting up python2.7 (2.7.15~rc1-1ubuntu0.1) ...
+Setting up libpython-stdlib:amd64 (2.7.15~rc1-1) ...
+Setting up python (2.7.15~rc1-1) ...
+Setting up python-meld3 (1.0.2-2) ...
+Setting up python-pkg-resources (39.0.1-2) ...
+Setting up supervisor (3.3.1-1.1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/supervisor.service → /lib/systemd/system/supervisor.service.
+Processing triggers for ureadahead (0.100.0-20) ...
+Processing triggers for systemd (237-3ubuntu10.12) ...
+root@book-app:~# systemctl enable supervisor
+Synchronizing state of supervisor.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable supervisor
+root@book-app:~# systemctl start supervisor
+root@book-app:~# systemctl status supervisor
+● supervisor.service - Supervisor process control system for UNIX
+   Loaded: loaded (/lib/systemd/system/supervisor.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sun 2019-02-17 23:30:13 UTC; 1min 21s ago
+     Docs: http://supervisord.org
+ Main PID: 10668 (supervisord)
+    Tasks: 1 (limit: 1152)
+   CGroup: /system.slice/supervisor.service
+           └─10668 /usr/bin/python /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+
+Feb 17 23:30:13 book-app systemd[1]: Started Supervisor process control system for UNIX.
+Feb 17 23:30:14 book-app supervisord[10668]: 2019-02-17 23:30:14,223 CRIT Supervisor running as root (no user in config
+Feb 17 23:30:14 book-app supervisord[10668]: 2019-02-17 23:30:14,228 WARN No file matches via include "/etc/supervisor/c
+Feb 17 23:30:14 book-app supervisord[10668]: 2019-02-17 23:30:14,258 INFO RPC interface 'supervisor' initialized
+Feb 17 23:30:14 book-app supervisord[10668]: 2019-02-17 23:30:14,258 CRIT Server 'unix_http_server' running without any
+Feb 17 23:30:14 book-app supervisord[10668]: 2019-02-17 23:30:14,258 INFO supervisord started with pid 10668
+lines 1-15/15 (END)
+root@book-app:~# apt-get -y install python3-virtualenv
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following package was automatically installed and is no longer required:
+  grub-pc-bin
+Use 'apt autoremove' to remove it.
+The following additional packages will be installed:
+  python-pip-whl
+The following NEW packages will be installed:
+  python-pip-whl python3-virtualenv
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1696 kB of archives.
+After this operation, 1996 kB of additional disk space will be used.
+Get:1 http://mirrors.digitalocean.com/ubuntu bionic-updates/universe amd64 python-pip-whl all 9.0.1-2.3~ubuntu1 [1652 kB]
+Get:2 http://mirrors.digitalocean.com/ubuntu bionic/universe amd64 python3-virtualenv all 15.1.0+ds-1.1 [43.4 kB]
+Fetched 1696 kB in 2s (944 kB/s)
+Selecting previously unselected package python-pip-whl.
+(Reading database ... 68090 files and directories currently installed.)
+Preparing to unpack .../python-pip-whl_9.0.1-2.3~ubuntu1_all.deb ...
+Unpacking python-pip-whl (9.0.1-2.3~ubuntu1) ...
+Selecting previously unselected package python3-virtualenv.
+Preparing to unpack .../python3-virtualenv_15.1.0+ds-1.1_all.deb ...
+Unpacking python3-virtualenv (15.1.0+ds-1.1) ...
+Setting up python-pip-whl (9.0.1-2.3~ubuntu1) ...
+Setting up python3-virtualenv (15.1.0+ds-1.1) ...
+root@book-app:~# which virtualenv
+root@book-app:~# type -p virtualenv
+root@book-app:~# type -p virtualenv3
+root@book-app:~# su - postgres
+postgres@book-app:~$ createuser librarian
+postgres@book-app:~$ createdb librarian_prod --owner librarian
+postgres@book-app:~$ psql -c "ALTER USER librarian WITH PASSWORD 'NilRelationshipDslDisc'"
+ALTER ROLE
+postgres@book-app:~$ exit
+logout
+root@book-app:~# adduser librarian
+Adding user `librarian' ...
+Adding new group `librarian' (1000) ...
+Adding new user `librarian' (1000) with group `librarian' ...
+Creating home directory `/home/librarian' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for librarian
+Enter the new value, or press ENTER for the default
+	Full Name []:
+	Room Number []:
+	Work Phone []:
+	Home Phone []:
+	Other []:
+Is the information correct? [Y/n] y
+root@book-app:~# gpasswd -a librarian sudo
+Adding user librarian to group sudo
+root@book-app:~# su - librarian
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+librarian@book-app:~$ cd .ssh
+-su: cd: .ssh: No such file or directory
+librarian@book-app:~$ mkdir .ssh
+librarian@book-app:~$ chmod og-rwx .ssh
+librarian@book-app:~$ ls -l .ssh
+total 0
+librarian@book-app:~$ ls -ld .ssh
+drwx------ 2 librarian librarian 4096 Feb 17 23:49 .ssh
+librarian@book-app:~$ cd .ssh
+librarian@book-app:~/.ssh$ vim authorized_keys
+librarian@book-app:~/.ssh$ chmod og-wrx authorized_keys
+librarian@book-app:~/.ssh$ cd
+librarian@book-app:~$ ls -a
+.  ..  .bash_history  .bash_logout  .bashrc  .cache  .cloud-locale-test.skip  .gnupg  .profile  .ssh  .viminfo
+librarian@book-app:~$ mkdir book_app
+librarian@book-app:~$ cd book_app/
+librarian@book-app:~/book_app$ virtualenv .
+
+Command 'virtualenv' not found, but can be installed with:
+
+sudo apt install virtualenv
+
+librarian@book-app:~/book_app$ python3 -m virtualenv .
+Running virtualenv with interpreter /usr/bin/python2
+New python executable in /home/librarian/book_app/bin/python2
+Also creating executable in /home/librarian/book_app/bin/python
+Installing setuptools, pkg_resources, pip, wheel...done.
+librarian@book-app:~/book_app$ ls -la
+total 24
+drwxrwxr-x 6 librarian librarian 4096 Feb 18 00:02 .
+drwxr-xr-x 6 librarian librarian 4096 Feb 18 00:01 ..
+drwxrwxr-x 2 librarian librarian 4096 Feb 18 00:02 bin
+drwxrwxr-x 3 librarian librarian 4096 Feb 18 00:02 lib
+drwxrwxr-x 2 librarian librarian 4096 Feb 18 00:02 local
+drwxrwxr-x 3 librarian librarian 4096 Feb 18 00:02 share
+librarian@book-app:~/book_app$ rm -rf *
+librarian@book-app:~/book_app$ ls -la
+total 8
+drwxrwxr-x 2 librarian librarian 4096 Feb 18 00:03 .
+drwxr-xr-x 6 librarian librarian 4096 Feb 18 00:01 ..
+librarian@book-app:~/book_app$ python3 -m virtualenv --help
+Usage: virtualenv.py [OPTIONS] DEST_DIR
+
+Options:
+  --version             show program's version number and exit
+  -h, --help            show this help message and exit
+  -v, --verbose         Increase verbosity.
+  -q, --quiet           Decrease verbosity.
+  -p PYTHON_EXE, --python=PYTHON_EXE
+                        The Python interpreter to use, e.g.,
+                        --python=python2.5 will use the python2.5 interpreter
+                        to create the new environment.  The default is the
+                        python2 interpreter on your path (e.g.
+                        /usr/bin/python2)
+  --clear               Clear out the non-root install and start from scratch.
+  --no-site-packages    DEPRECATED. Retained only for backward compatibility.
+                        Not having access to global site-packages is now the
+                        default behavior.
+  --system-site-packages
+                        Give the virtual environment access to the global
+                        site-packages.
+  --always-copy         Always copy files rather than symlinking.
+  --unzip-setuptools    Unzip Setuptools when installing it.
+  --relocatable         Make an EXISTING virtualenv environment relocatable.
+                        This fixes up scripts and makes all .pth files
+                        relative.
+  --no-setuptools       Do not install setuptools in the new virtualenv.
+  --no-pip              Do not install pip in the new virtualenv.
+  --no-wheel            Do not install wheel in the new virtualenv.
+  --extra-search-dir=DIR
+                        Directory to look for setuptools/pip distributions in.
+                        This option can be used multiple times.
+  --download            Download preinstalled packages from PyPI.
+  --no-download, --never-download
+                        Do not download preinstalled packages from PyPI.
+  --prompt=PROMPT       Provides an alternative prompt prefix for this
+                        environment.
+  --setuptools          DEPRECATED. Retained only for backward compatibility.
+                        This option has no effect.
+  --distribute          DEPRECATED. Retained only for backward compatibility.
+                        This option has no effect.
+librarian@book-app:~/book_app$ python3 -m virtualenv -p python3 .
+Already using interpreter /usr/bin/python3
+Using base prefix '/usr'
+New python executable in /home/librarian/book_app/bin/python3
+Also creating executable in /home/librarian/book_app/bin/python
+Installing setuptools, pkg_resources, pip, wheel...done.
+librarian@book-app:~/book_app$ source bin/activate
+(book_app) librarian@book-app:~/book_app$ type -p
+(book_app) librarian@book-app:~/book_app$ type -p python
+/home/librarian/book_app/bin/python
+(book_app) librarian@book-app:~/book_app$ git clone https://github.com/joyliao07/django_lender.git
+Cloning into 'django_lender'...
+remote: Enumerating objects: 567, done.
+remote: Counting objects: 100% (567/567), done.
+remote: Compressing objects: 100% (432/432), done.
+remote: Total 567 (delta 202), reused 472 (delta 118), pack-reused 0
+Receiving objects: 100% (567/567), 963.19 KiB | 13.96 MiB/s, done.
+Resolving deltas: 100% (202/202), done.
+(book_app) librarian@book-app:~/book_app$ ls -a
+.  ..  bin  django_lender  include  lib  share
+(book_app) librarian@book-app:~/book_app$ cd django_lender/
+(book_app) librarian@book-app:~/book_app/django_lender$ pip install -r requirements.txt
+Collecting asgiref==2.3.2 (from -r requirements.txt (line 1))
+  Downloading https://files.pythonhosted.org/packages/6a/ca/c141dc77da60230e393d33b5b29afbca718b7e6ce07921c42cf08af907f8/asgiref-2.3.2-py2.py3-none-any.whl
+Collecting async-timeout==3.0.1 (from -r requirements.txt (line 2))
+  Downloading https://files.pythonhosted.org/packages/e1/1e/5a4441be21b0726c4464f3f23c8b19628372f606755a9d2e46c187e65ec4/async_timeout-3.0.1-py3-none-any.whl
+Collecting attrs==18.2.0 (from -r requirements.txt (line 3))
+  Downloading https://files.pythonhosted.org/packages/3a/e1/5f9023cc983f1a628a8c2fd051ad19e76ff7b142a0faf329336f9a62a514/attrs-18.2.0-py2.py3-none-any.whl
+Collecting autobahn==19.1.1 (from -r requirements.txt (line 4))
+  Downloading https://files.pythonhosted.org/packages/3d/d9/28aa58047558351eea29dafb8ff813af72e39ac35ade686394ca856914a7/autobahn-19.1.1-py2.py3-none-any.whl (302kB)
+    100% |████████████████████████████████| 307kB 18.6MB/s
+Collecting Automat==0.7.0 (from -r requirements.txt (line 5))
+  Downloading https://files.pythonhosted.org/packages/a3/86/14c16bb98a5a3542ed8fed5d74fb064a902de3bdd98d6584b34553353c45/Automat-0.7.0-py2.py3-none-any.whl
+Collecting channels==2.1.7 (from -r requirements.txt (line 6))
+  Downloading https://files.pythonhosted.org/packages/57/42/df2e47cf16e6e636bf0d93ee00ec6eadf54cd4ed01b1083f3fcb0987a13e/channels-2.1.7-py2.py3-none-any.whl
+Collecting confusable-homoglyphs==3.2.0 (from -r requirements.txt (line 7))
+  Downloading https://files.pythonhosted.org/packages/a4/38/aadd1c42ae353943cd1523cdd38ffb267ba95861b4e8bb1a559d975ae612/confusable_homoglyphs-3.2.0-py2.py3-none-any.whl (141kB)
+    100% |████████████████████████████████| 143kB 24.3MB/s
+Collecting constantly==15.1.0 (from -r requirements.txt (line 8))
+  Downloading https://files.pythonhosted.org/packages/b9/65/48c1909d0c0aeae6c10213340ce682db01b48ea900a7d9fce7a7910ff318/constantly-15.1.0-py2.py3-none-any.whl
+Collecting coverage==4.5.2 (from -r requirements.txt (line 9))
+  Downloading https://files.pythonhosted.org/packages/a4/5c/b3eac6aa7eb4af83c8580d9c1578343910bdcc59e64e3565402f9a527f9c/coverage-4.5.2-cp36-cp36m-manylinux1_x86_64.whl (205kB)
+    100% |████████████████████████████████| 215kB 27.3MB/s
+Collecting daphne==2.2.5 (from -r requirements.txt (line 10))
+  Downloading https://files.pythonhosted.org/packages/12/db/cecc130407d073470812f9e2f66897aa81399fa819671c8cf7b16e84366d/daphne-2.2.5-py2.py3-none-any.whl
+Collecting dj-database-url==0.5.0 (from -r requirements.txt (line 11))
+  Downloading https://files.pythonhosted.org/packages/d4/a6/4b8578c1848690d0c307c7c0596af2077536c9ef2a04d42b00fabaa7e49d/dj_database_url-0.5.0-py2.py3-none-any.whl
+Collecting Django==2.1.7 (from -r requirements.txt (line 12))
+  Downloading https://files.pythonhosted.org/packages/c7/87/fbd666c4f87591ae25b7bb374298e8629816e87193c4099d3608ef11fab9/Django-2.1.7-py3-none-any.whl (7.3MB)
+    100% |████████████████████████████████| 7.3MB 5.0MB/s
+Collecting django-filter==2.0.0 (from -r requirements.txt (line 13))
+  Downloading https://files.pythonhosted.org/packages/6a/8b/8517167a0adc45ce94d0873efb9487dd4cdeff7e10f96e837ad3d58f5837/django_filter-2.0.0-py3-none-any.whl (69kB)
+    100% |████████████████████████████████| 71kB 21.1MB/s
+Collecting django-heroku==0.3.1 (from -r requirements.txt (line 14))
+  Downloading https://files.pythonhosted.org/packages/59/af/5475a876c5addd5a3494db47d9f7be93cc14d3a7603542b194572791b6c6/django_heroku-0.3.1-py2.py3-none-any.whl
+Collecting django-registration==3.0 (from -r requirements.txt (line 15))
+  Downloading https://files.pythonhosted.org/packages/2a/f4/09eb9a35c63204a2b3180d34f88feb0e0565c92bc450fbf1f8c8cf421fbb/django_registration-3.0-py2.py3-none-any.whl (90kB)
+    100% |████████████████████████████████| 92kB 19.6MB/s
+Collecting gunicorn==19.9.0 (from -r requirements.txt (line 16))
+  Downloading https://files.pythonhosted.org/packages/8c/da/b8dd8deb741bff556db53902d4706774c8e1e67265f69528c14c003644e6/gunicorn-19.9.0-py2.py3-none-any.whl (112kB)
+    100% |████████████████████████████████| 122kB 21.2MB/s
+Collecting hyperlink==18.0.0 (from -r requirements.txt (line 17))
+  Downloading https://files.pythonhosted.org/packages/a7/b6/84d0c863ff81e8e7de87cff3bd8fd8f1054c227ce09af1b679a8b17a9274/hyperlink-18.0.0-py2.py3-none-any.whl
+Collecting idna==2.8 (from -r requirements.txt (line 18))
+  Downloading https://files.pythonhosted.org/packages/14/2c/cd551d81dbe15200be1cf41cd03869a46fe7226e7450af7a6545bfc474c9/idna-2.8-py2.py3-none-any.whl (58kB)
+    100% |████████████████████████████████| 61kB 20.2MB/s
+Collecting incremental==17.5.0 (from -r requirements.txt (line 19))
+  Downloading https://files.pythonhosted.org/packages/f5/1d/c98a587dc06e107115cf4a58b49de20b19222c83d75335a192052af4c4b7/incremental-17.5.0-py2.py3-none-any.whl
+Collecting Pillow==5.4.1 (from -r requirements.txt (line 20))
+  Downloading https://files.pythonhosted.org/packages/85/5e/e91792f198bbc5a0d7d3055ad552bc4062942d27eaf75c3e2783cf64eae5/Pillow-5.4.1-cp36-cp36m-manylinux1_x86_64.whl (2.0MB)
+    100% |████████████████████████████████| 2.0MB 11.8MB/s
+Collecting psycopg2==2.7.7 (from -r requirements.txt (line 21))
+  Downloading https://files.pythonhosted.org/packages/37/25/53e8398975aa3323de46a5cc2745aeb4c9db11352ca905d3a15c53b6a816/psycopg2-2.7.7-cp36-cp36m-manylinux1_x86_64.whl (2.7MB)
+    100% |████████████████████████████████| 2.7MB 13.7MB/s
+Collecting psycopg2-binary==2.7.7 (from -r requirements.txt (line 22))
+  Downloading https://files.pythonhosted.org/packages/2c/85/97db05dd8f6adff57cd1cb8acceeffdaf4724efec18b9af23f3cd75ad089/psycopg2_binary-2.7.7-cp36-cp36m-manylinux1_x86_64.whl (2.7MB)
+    100% |████████████████████████████████| 2.7MB 13.2MB/s
+Collecting PyHamcrest==1.9.0 (from -r requirements.txt (line 23))
+  Downloading https://files.pythonhosted.org/packages/9a/d5/d37fd731b7d0e91afcc84577edeccf4638b4f9b82f5ffe2f8b62e2ddc609/PyHamcrest-1.9.0-py2.py3-none-any.whl (52kB)
+    100% |████████████████████████████████| 61kB 8.1MB/s
+Collecting python-decouple==3.1 (from -r requirements.txt (line 24))
+  Downloading https://files.pythonhosted.org/packages/9b/99/ddfbb6362af4ee239a012716b1371aa6d316ff1b9db705bfb182fbc4780f/python-decouple-3.1.tar.gz
+Collecting pytz==2018.9 (from -r requirements.txt (line 25))
+  Downloading https://files.pythonhosted.org/packages/61/28/1d3920e4d1d50b19bc5d24398a7cd85cc7b9a75a490570d5a30c57622d34/pytz-2018.9-py2.py3-none-any.whl (510kB)
+    100% |████████████████████████████████| 512kB 22.0MB/s
+Collecting six==1.12.0 (from -r requirements.txt (line 26))
+  Downloading https://files.pythonhosted.org/packages/73/fb/00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9/six-1.12.0-py2.py3-none-any.whl
+Collecting Twisted==18.9.0 (from -r requirements.txt (line 27))
+  Downloading https://files.pythonhosted.org/packages/5d/0e/a72d85a55761c2c3ff1cb968143a2fd5f360220779ed90e0fadf4106d4f2/Twisted-18.9.0.tar.bz2 (3.1MB)
+    100% |████████████████████████████████| 3.1MB 12.2MB/s
+Collecting txaio==18.8.1 (from -r requirements.txt (line 28))
+  Downloading https://files.pythonhosted.org/packages/e9/6d/e1a6f7835cde86728e5bb1f577be9b2d7d273fdb33c286e70b087d418ded/txaio-18.8.1-py2.py3-none-any.whl
+Collecting whitenoise==4.1.2 (from -r requirements.txt (line 29))
+  Downloading https://files.pythonhosted.org/packages/fd/2a/b51377ab9826f0551da19951257d2434f46329cd6cfdf9592ea9ca5f6034/whitenoise-4.1.2-py2.py3-none-any.whl
+Collecting zope.interface==4.6.0 (from -r requirements.txt (line 30))
+  Downloading https://files.pythonhosted.org/packages/19/17/1d198a6aaa9aa4590862fe3d3a2ed7dd808050cab4eebe8a2f2f813c1376/zope.interface-4.6.0-cp36-cp36m-manylinux1_x86_64.whl (167kB)
+    100% |████████████████████████████████| 174kB 25.0MB/s
+Requirement already satisfied: setuptools in /home/librarian/book_app/lib/python3.6/site-packages (from PyHamcrest==1.9.0->-r requirements.txt (line 23)) (40.8.0)
+Building wheels for collected packages: python-decouple, Twisted
+  Building wheel for python-decouple (setup.py) ... done
+  Stored in directory: /home/librarian/.cache/pip/wheels/0f/ee/80/75b684060dc6ecc5a28c07b75ef4063f378aff1a37556f342a
+  Building wheel for Twisted (setup.py) ... done
+  Stored in directory: /home/librarian/.cache/pip/wheels/57/2e/89/11ba83bc08ac30a5e3a6005f0310c78d231b96a270def88ca0
+Successfully built python-decouple Twisted
+Installing collected packages: async-timeout, asgiref, attrs, six, txaio, autobahn, Automat, pytz, Django, zope.interface, constantly, incremental, idna, hyperlink, PyHamcrest, Twisted, daphne, channels, confusable-homoglyphs, coverage, dj-database-url, django-filter, whitenoise, psycopg2, django-heroku, django-registration, gunicorn, Pillow, psycopg2-binary, python-decouple
+Successfully installed Automat-0.7.0 Django-2.1.7 Pillow-5.4.1 PyHamcrest-1.9.0 Twisted-18.9.0 asgiref-2.3.2 async-timeout-3.0.1 attrs-18.2.0 autobahn-19.1.1 channels-2.1.7 confusable-homoglyphs-3.2.0 constantly-15.1.0 coverage-4.5.2 daphne-2.2.5 dj-database-url-0.5.0 django-filter-2.0.0 django-heroku-0.3.1 django-registration-3.0 gunicorn-19.9.0 hyperlink-18.0.0 idna-2.8 incremental-17.5.0 psycopg2-2.7.7 psycopg2-binary-2.7.7 python-decouple-3.1 pytz-2018.9 six-1.12.0 txaio-18.8.1 whitenoise-4.1.2 zope.interface-4.6.0
+(book_app) librarian@book-app:~/book_app/django_lender$ ls
+Dockerfile  Pipfile       README.md      docker-compose.yml  lender_books  requirements.txt  static
+LICENSE     Pipfile.lock  django_lender  entrypoint.sh       manage.py     runtime.txt
+(book_app) librarian@book-app:~/book_app/django_lender$ nano django_lender/settings.py
+(book_app) librarian@book-app:~/book_app/django_lender$ touch .env
+(book_app) librarian@book-app:~/book_app/django_lender$ nano .env
+(book_app) librarian@book-app:~/book_app/django_lender$ python manage.py migrate
+Traceback (most recent call last):
+  File "manage.py", line 15, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/core/management/__init__.py", line 381, in execute_from_command_line
+    utility.execute()
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/core/management/__init__.py", line 325, in execute
+    settings.INSTALLED_APPS
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/conf/__init__.py", line 57, in __getattr__
+    self._setup(name)
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/conf/__init__.py", line 44, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/conf/__init__.py", line 107, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/home/librarian/book_app/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/librarian/book_app/django_lender/django_lender/settings.py", line 41, in <module>
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
+AttributeError: 'NoneType' object has no attribute 'split'
+(book_app) librarian@book-app:~/book_app/django_lender$ ls
+Dockerfile  Pipfile       README.md      docker-compose.yml  lender_books  requirements.txt  static
+LICENSE     Pipfile.lock  django_lender  entrypoint.sh       manage.py     runtime.txt
+(book_app) librarian@book-app:~/book_app/django_lender$ ls -a
+.            .editorconfig  .gitignore  Pipfile       django_lender       lender_books      runtime.txt
+..           .env           Dockerfile  Pipfile.lock  docker-compose.yml  manage.py         static
+.coveragerc  .git           LICENSE     README.md     entrypoint.sh       requirements.txt
+(book_app) librarian@book-app:~/book_app/django_lender$ cat .env
+SECRET_KEY=5zeq@n@ou#oixtvix1gta$^r)mw-@b1(ymn1f59j830d5b5e#0
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1 0.0.0.0 localhost 157.230.172.253
+DB_HOST=localhost
+DB_NAME=librarian_prod
+DB_USER=librarian
+
+(book_app) librarian@book-app:~/book_app/django_lender$ for line in $(cat .env); echo "$line"; done
+-su: syntax error near unexpected token `echo'
+(book_app) librarian@book-app:~/book_app/django_lender$ for line in $(cat .env); do echo "$line"; done
+SECRET_KEY=5zeq@n@ou#oixtvix1gta$^r)mw-@b1(ymn1f59j830d5b5e#0
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1
+0.0.0.0
+localhost
+157.230.172.253
+DB_HOST=localhost
+DB_NAME=librarian_prod
+DB_USER=librarian
+(book_app) librarian@book-app:~/book_app/django_lender$ cat manage.py
+#!/usr/bin/env python
+import os
+import sys
+
+if __name__ == '__main__':
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_lender.settings')
+    try:
+        from django.core.management import execute_from_command_line
+    except ImportError as exc:
+        raise ImportError(
+            "Couldn't import Django. Are you sure it's installed and "
+            "available on your PYTHONPATH environment variable? Did you "
+            "forget to activate a virtual environment?"
+        ) from exc
+    execute_from_command_line(sys.argv)
+(book_app) librarian@book-app:~/book_app/django_lender$ find . -type f -exec fgrep -lwe 'DJANGO_SETTINGS_MODULE
+> django_lender.settings' '{}' '+'
+./django_lender/wsgi.py
+./manage.py
+(book_app) librarian@book-app:~/book_app/django_lender$ less django_lender/wsgi.py
+(book_app) librarian@book-app:~/book_app/django_lender$ ls django_lender/settings.py
+django_lender/settings.py
+(book_app) librarian@book-app:~/book_app/django_lender$ vi do_settings.py
+(book_app) librarian@book-app:~/book_app/django_lender$ cat .env >> do_settings.py
+(book_app) librarian@book-app:~/book_app/django_lender$ nano do_settings.py
+(book_app) librarian@book-app:~/book_app/django_lender$ less django_lender/settings.py
+(book_app) librarian@book-app:~/book_app/django_lender$ DJANGO_SETTINGS_MODULE=do_settings python manage.py migrate
+Traceback (most recent call last):
+  File "manage.py", line 15, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/core/management/__init__.py", line 381, in execute_from_command_line
+    utility.execute()
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/core/management/__init__.py", line 325, in execute
+    settings.INSTALLED_APPS
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/conf/__init__.py", line 57, in __getattr__
+    self._setup(name)
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/conf/__init__.py", line 44, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/home/librarian/book_app/lib/python3.6/site-packages/django/conf/__init__.py", line 107, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/home/librarian/book_app/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/librarian/book_app/django_lender/do_settings.py", line 1, in <module>
+    from django_lender.settings import *
+  File "/home/librarian/book_app/django_lender/django_lender/settings.py", line 41, in <module>
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
+AttributeError: 'NoneType' object has no attribute 'split'
+(book_app) librarian@book-app:~/book_app/django_lender$ nano django_lender/settings.py
+(book_app) librarian@book-app:~/book_app/django_lender$ DJANGO_SETTINGS_MODULE=do_settings python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, django_registration, lender_books, sessions
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying django_registration.0001_initial... OK
+  Applying lender_books.0001_initial... OK
+  Applying lender_books.0002_auto_20190212_1743... OK
+  Applying sessions.0001_initial... OK
+(book_app) librarian@book-app:~/book_app/django_lender$ DJANGO_SETTINGS_MODULE=do_settings python manage.py collectstatic
+
+You have requested to collect static files at the destination
+location as specified in your settings:
+
+    /home/librarian/book_app/django_lender/static
+
+This will overwrite existing files!
+Are you sure you want to do this?
+
+Type 'yes' to continue, or 'no' to cancel: yes
+Found another file with the destination path 'assets/dino.png'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'css/style.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'css/skeleton.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'css/normalize.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/search.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-viewlink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-calendar.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-no.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-addlink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/sorting-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/calendar-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/tooltag-add.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-yes.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-unknown-alt.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/tooltag-arrowright.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-alert.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/LICENSE'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/selector-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-clock.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-changelink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-unknown.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/README.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/inline-delete.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-deletelink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/gis/move_vertex_off.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/gis/move_vertex_on.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/Roboto-Bold-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/Roboto-Regular-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/Roboto-Light-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/README.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/LICENSE.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/widgets.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/responsive.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/login.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/changelists.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/responsive_rtl.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/rtl.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/dashboard.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/base.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/forms.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/fonts.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/autocomplete.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/vendor/select2/LICENSE-SELECT2.md'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/vendor/select2/select2.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/vendor/select2/select2.min.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/calendar.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/inlines.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/jquery.init.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/collapse.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/SelectBox.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/actions.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/prepopulate.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/popup_response.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/prepopulate.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/cancel.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/urlify.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/timeparse.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/SelectFilter2.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/autocomplete.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/prepopulate_init.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/collapse.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/change_form.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/inlines.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/core.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/actions.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/jquery/jquery.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/jquery/jquery.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/jquery/LICENSE.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/LICENSE.md'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/select2.full.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/select2.full.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/zh-CN.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/bg.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/el.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ca.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/pt.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/sr.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/sr-Cyrl.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/en.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/tr.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/it.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/sv.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/cs.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/gl.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/pl.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/da.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/zh-TW.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/eu.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/pt-BR.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/km.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/fa.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/es.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ru.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/mk.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/hu.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/et.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/lt.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/vi.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/lv.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/is.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/fi.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/hr.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ko.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ar.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/sk.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/nb.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/th.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/uk.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/fr.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/az.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/nl.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ms.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/id.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ja.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/hi.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/he.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ro.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/de.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/xregexp/xregexp.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/xregexp/xregexp.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/xregexp/LICENSE.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/admin/RelatedObjectLookups.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/admin/DateTimeShortcuts.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/search.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-viewlink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-calendar.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-no.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-addlink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/sorting-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/calendar-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/tooltag-add.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-yes.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-unknown-alt.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/tooltag-arrowright.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-alert.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/LICENSE'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/selector-icons.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-clock.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-changelink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-unknown.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/README.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/inline-delete.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/icon-deletelink.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/gis/move_vertex_off.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/img/gis/move_vertex_on.svg'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/Roboto-Bold-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/Roboto-Regular-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/Roboto-Light-webfont.woff'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/README.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/fonts/LICENSE.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/widgets.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/responsive.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/login.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/changelists.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/responsive_rtl.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/rtl.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/dashboard.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/base.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/forms.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/fonts.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/autocomplete.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/vendor/select2/LICENSE-SELECT2.md'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/vendor/select2/select2.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/css/vendor/select2/select2.min.css'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/calendar.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/inlines.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/jquery.init.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/collapse.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/SelectBox.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/actions.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/prepopulate.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/popup_response.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/prepopulate.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/cancel.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/urlify.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/timeparse.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/SelectFilter2.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/autocomplete.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/prepopulate_init.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/collapse.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/change_form.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/inlines.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/core.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/actions.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/jquery/jquery.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/jquery/jquery.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/jquery/LICENSE.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/LICENSE.md'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/select2.full.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/select2.full.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/zh-CN.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/bg.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/el.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ca.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/pt.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/sr.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/sr-Cyrl.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/en.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/tr.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/it.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/sv.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/cs.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/gl.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/pl.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/da.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/zh-TW.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/eu.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/pt-BR.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/km.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/fa.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/es.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ru.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/mk.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/hu.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/et.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/lt.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/vi.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/lv.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/is.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/fi.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/hr.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ko.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ar.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/sk.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/nb.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/th.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/uk.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/fr.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/az.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/nl.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ms.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/id.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ja.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/hi.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/he.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/ro.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/select2/i18n/de.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/xregexp/xregexp.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/xregexp/xregexp.min.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/vendor/xregexp/LICENSE.txt'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/admin/RelatedObjectLookups.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+Found another file with the destination path 'admin/js/admin/DateTimeShortcuts.js'. It will be ignored since only the first encountered file is collected. If this is not what you want, make sure every static file has a unique path.
+
+0 static files copied to '/home/librarian/book_app/django_lender/static', 123 unmodified.
+(book_app) librarian@book-app:~/book_app/django_lender$ DJANGO_SETTINGS_MODULE=do_settings python manage.py runserver 0.0.0.0:8000
+Performing system checks...
+
+System check identified no issues (0 silenced).
+February 17, 2019 - 16:37:34
+Django version 2.1.7, using settings 'do_settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[17/Feb/2019 16:38:02] "GET / HTTP/1.1" 302 0
+[17/Feb/2019 16:38:02] "GET /accounts/login/?next=/ HTTP/1.1" 200 1336
+[17/Feb/2019 16:38:02] "GET /static/css/normalize.css HTTP/1.1" 200 7798
+[17/Feb/2019 16:38:02] "GET /static/css/skeleton.css HTTP/1.1" 200 11453
+[17/Feb/2019 16:38:02] "GET /static/css/style.css HTTP/1.1" 200 394
+[17/Feb/2019 16:38:02] "GET /static/assets/dino.png HTTP/1.1" 200 21472
+^C(book_app) librarian@book-app:~/book_app/django_lender$ pip install gunicorn
+Requirement already satisfied: gunicorn in /home/librarian/book_app/lib/python3.6/site-packages (19.9.0)
+(book_app) librarian@book-app:~/book_app/django_lender$ cd ..
+(book_app) librarian@book-app:~/book_app$ ls
+bin  django_lender  include  lib  share
+(book_app) librarian@book-app:~/book_app$ vim bin/gunicorn_start
+
+[1]+  Stopped                 vim bin/gunicorn_start
+(book_app) librarian@book-app:~/book_app$ pwd
+/home/librarian/book_app
+(book_app) librarian@book-app:~/book_app$ ls
+bin  django_lender  include  lib  share
+(book_app) librarian@book-app:~/book_app$ fg
+vim bin/gunicorn_start
+(book_app) librarian@book-app:~/book_app$ nano bin/gunicorn_start
+(book_app) librarian@book-app:~/book_app$ chmod u+x bin/gunicorn_start
+(book_app) librarian@book-app:~/book_app$ mkdir ../run
+(book_app) librarian@book-app:~/book_app$ pwd
+/home/librarian/book_app
+(book_app) librarian@book-app:~/book_app$ cd ..
+(book_app) librarian@book-app:~$ pwd
+/home/librarian
+(book_app) librarian@book-app:~$ mkdir logs
+(book_app) librarian@book-app:~$ touch logs/gunicorn-error.log
+(book_app) librarian@book-app:~$ pwd
+/home/librarian
+(book_app) librarian@book-app:~$ ls
+book_app  logs  run
+(book_app) librarian@book-app:~$ pws
+
+Command 'pws' not found, did you mean:
+
+  command 'aws' from snap aws-cli (1.15.71)
+  command 'pwd' from deb coreutils
+  command 'ps' from deb procps
+  command 'aws' from deb awscli
+  command 'pvs' from deb lvm2
+  command 'rpws' from deb ratpoison
+  command 'pms' from deb pms
+  command 'psw' from deb wise
+  command 'pcs' from deb pcs
+  command 'pts' from deb openafs-client
+
+See 'snap info <snapname>' for additional versions.
+
+(book_app) librarian@book-app:~$ pwd
+/home/librarian
+(book_app) librarian@book-app:~$ ls /etc/nginx/sites-available
+default  urban-train
+(book_app) librarian@book-app:~$ cd /etc/nginx/sites-available/
+(book_app) librarian@book-app:/etc/nginx/sites-available$ ls
+default  urban-train
+(book_app) librarian@book-app:/etc/nginx/sites-available$ rm -R urban-train
+rm: remove write-protected regular file 'urban-train'? yes
+rm: cannot remove 'urban-train': Permission denied
+(book_app) librarian@book-app:/etc/nginx/sites-available$ cd ~
+(book_app) librarian@book-app:~$ ls
+book_app  logs  run
+(book_app) librarian@book-app:~$ pwd
+/home/librarian
+(book_app) librarian@book-app:~$ ls -a
+.   .bash_history  .bashrc  .cloud-locale-test.skip  .local    .ssh      book_app  run
+..  .bash_logout   .cache   .gnupg                   .profile  .viminfo  logs
+(book_app) librarian@book-app:~$ find . -name static
+./book_app/lib/python3.6/site-packages/django/contrib/gis/static
+./book_app/lib/python3.6/site-packages/django/contrib/admin/static
+./book_app/django_lender/django_lender/static
+./book_app/django_lender/static
+./book_app/django_lender/lender_books/static
+(book_app) librarian@book-app:~$ cd book_app/django_lender/
+(book_app) librarian@book-app:~/book_app/django_lender$ ls static
+admin  assets  css  staticfiles.json
+(book_app) librarian@book-app:~/book_app/django_lender$ pwd
+/home/librarian/book_app/django_lender
+(book_app) librarian@book-app:~/book_app/django_lender$ cd ..
+(book_app) librarian@book-app:~/book_app$ ls
+bin  django_lender  include  lib  share
+(book_app) librarian@book-app:~/book_app$ cd django_lender/
+(book_app) librarian@book-app:~/book_app/django_lender$ ls
+Dockerfile  Pipfile       README.md    django_lender   docker-compose.yml  lender_books  requirements.txt  static
+LICENSE     Pipfile.lock  __pycache__  do_settings.py  entrypoint.sh       manage.py     runtime.txt
+(book_app) librarian@book-app:~/book_app/django_lender$

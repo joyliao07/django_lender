@@ -9,16 +9,16 @@ class Book(models.Model):
     """To set up Book class."""
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books')
 
-    cover_imgage = models.ImageField(max_length=400)
+    cover_imgage = models.ImageField(upload_to='django_lender/static/assets/', max_length=400)
     title = models.CharField(max_length=48)
     author = models.CharField(max_length=50)
 
     # Do a list comprehension:
     years = []
-    for x in range(1200, 2020):
+    for x in range(1700, 2020):
         years.append((x, x))
 
-    year = models.CharField(max_length=4, default='2019', choices=years)
+    year = models.IntegerField(default=2019, choices=years)
 
     STATES = [
         ('available', 'Available'),

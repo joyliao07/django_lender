@@ -51,14 +51,6 @@
             ],
             "version": "==0.7.0"
         },
-        "channels": {
-            "hashes": [
-                "sha256:5e91da393337c053028b210ea9280ef71589c6dfce5477577b57c9c0438f3f06",
-                "sha256:e13ba874d854ac493ece329dcd9947e82357c15437ac1a90ed1040d0e5b87aad"
-            ],
-            "index": "pypi",
-            "version": "==2.1.7"
-        },
         "confusable-homoglyphs": {
             "hashes": [
                 "sha256:3b4a0d9fa510669498820c91a0bfc0c327568cecec90648cf3819d4a6fc6a751",
@@ -109,22 +101,6 @@
             ],
             "index": "pypi",
             "version": "==4.5.2"
-        },
-        "daphne": {
-            "hashes": [
-                "sha256:07810599fb7df656192cf3deaaada078d876626e0d7243b7b80eca051921c1fc",
-                "sha256:728dc952f8ddd65bab70a4f424a437233c70ddf3593acee833ed5e430196dca8"
-            ],
-            "index": "pypi",
-            "version": "==2.2.5"
-        },
-        "dj-database-url": {
-            "hashes": [
-                "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163",
-                "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"
-            ],
-            "index": "pypi",
-            "version": "==0.5.0"
         },
         "django": {
             "hashes": [
@@ -314,26 +290,12 @@
             ],
             "version": "==1.12.0"
         },
-        "twisted": {
-            "hashes": [
-                "sha256:294be2c6bf84ae776df2fc98e7af7d6537e1c5e60a46d33c3ce2a197677da395"
-            ],
-            "version": "==18.9.0"
-        },
         "txaio": {
             "hashes": [
                 "sha256:67e360ac73b12c52058219bb5f8b3ed4105d2636707a36a7cdafb56fe06db7fe",
                 "sha256:b6b235d432cc58ffe111b43e337db71a5caa5d3eaa88f0eacf60b431c7626ef5"
             ],
             "version": "==18.8.1"
-        },
-        "whitenoise": {
-            "hashes": [
-                "sha256:118ab3e5f815d380171b100b05b76de2a07612f422368a201a9ffdeefb2251c1",
-                "sha256:42133ddd5229eeb6a0c9899496bdbe56c292394bf8666da77deeb27454c0456a"
-            ],
-            "index": "pypi",
-            "version": "==4.1.2"
         },
         "zope.interface": {
             "hashes": [
