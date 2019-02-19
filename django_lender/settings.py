@@ -39,8 +39,8 @@ DEBUG = os.getenv('DEBUG') == 'True'
 
 
 # HEROKU - Disabled for deployment??
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
-
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
+ALLOWED_HOSTS = ['https://git.heroku.com/django-book-lender.git']
 # ALLOWED_HOSTS = [
 #     "localhost",
 #     "0.0.0.0",
