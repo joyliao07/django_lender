@@ -13,7 +13,6 @@ def book_detail_view(request, pk=None):
 
     return render(request, 'books/book_detail.html', context)
 
-
 # @login_required
 def book_list_view(request):
     """To render book_list_view with its content."""
