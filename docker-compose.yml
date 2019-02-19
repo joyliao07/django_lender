@@ -2,13 +2,13 @@ version: "3"
 
 services:
   db:
-    container_name: 'db'
+    container_name: 'db_19'
     image: postgres:10.6-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
   web:
-    container_name: 'web'
+    container_name: 'web_19'
     env_file: .env
     build: .
     command: /src/entrypoint.sh
