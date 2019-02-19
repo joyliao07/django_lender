@@ -1,1 +1,1 @@
-web: gunicorn django-book-lender.wsgi
+web: gunicorn django_lender.wsgi
